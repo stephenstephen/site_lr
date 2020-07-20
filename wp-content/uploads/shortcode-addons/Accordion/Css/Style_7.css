@@ -1,0 +1,99 @@
+.oxi-addons-AC-SV-row {
+    width: 100%;
+    float: left;
+}
+
+.sa_element_ac_style_7 {
+    width: 100%;
+    float: left;
+    padding: 10px 10px 10px 52px;
+}
+
+.sa_element_ac_style_7 .oxi-addons-AC-SV-panel {
+    width: 100%;
+    float: left;
+    position: relative;
+    border-radius: 0px 5px 5px 0px;
+    padding: 10px 10px 10px 10px;
+    transition: none;
+}
+
+.sa_element_ac_style_7 .oxi-addons-AC-SV-panel:active {
+    top: 3px;
+}
+
+.sa_element_ac_style_7 .oxi-addons-AC-SV-panel:active .oxi-addons-AC-SV-icon {
+    top: -3px;
+    transition: none;
+}
+
+.sa_element_ac_style_7 .oxi-addons-AC-SV-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: #2561b4;
+    top: 0px;
+    font-size: 15px;
+    color: #ffffff;
+    border-right: 1px solid #0784ba;
+    border-radius: 5px 0px 0px 5px;
+    transition: none;
+}
+
+.sa_element_ac_style_7 .oxi-addons-AC-SV-header {
+    width: 100%;
+    float: left;
+    cursor: pointer;
+    font-size: 18px;
+    color: #ffffff;
+    font-family: "Nunito";
+    font-weight: 700;
+    font-style: normal;
+    line-height: 1.3;
+    text-align: left;
+    letter-spacing: .6px;
+    padding: 0px 0px 0px 0px;
+    transition: none;
+}
+
+.sa_element_ac_style_7 .oxi-addons-AC-SV-details {
+    display: none;
+    width: 100%;
+    float: left;
+    font-size: 13px;
+    color: #ffffff;
+    font-family: "Nunito";
+    font-weight: 400;
+    font-style: normal;
+    line-height: 1.3;
+    text-align: left;
+    padding: 10px 10px 10px 10px;
+    transition: none;
+}
+
+.sa_element_ac_style_7 .oxi-active .oxi-addons-AC-SV-details {
+    display: block;
+    width: 100%;
+    float: left;
+    font-size: 13px;
+    color: #ffffff;
+    font-family: "Nunito";
+    font-weight: 400;
+    font-style: normal;
+    line-height: 1.3;
+    text-align: left;
+    padding: 10px 10px 10px 10px;
+    transition: none;
+}
+
+@media only screen and (min-width:669px) and (max-width:993px) {
+    
+}
+
+@media only screen and (max-width:668px) {
+    
+}

@@ -1,0 +1,26 @@
+ .oxi-addons-main-wrapper-image-comparison-style-3 {
+     width: 100%;
+     float: left;
+     padding: 0px 0px 0px 0px
+ }
+ 
+ .oxi-addons-main-wrapper-image-comparison-style-3 * {
+     transition: none
+ }
+ 
+ .oxi-addons-main-wrapper-image-comparison-style-3 .oxi-addons-main {
+     width: 600px;
+     max-width: 100%;
+     margin: 0 auto
+ }
+ 
+ .oxi-addons-main-wrapper-image-comparison-style-3 .mbac .mbac-slide {
+     list-style-type: none
+ }
+ 
+ .oxi-addons-main-wrapper-image-comparison-style-3 .mbac .mbac-slide > img {
+     max-width: none
+ }
+
+ 
+    
