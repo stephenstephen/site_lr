@@ -130,7 +130,7 @@
 
     // Add smooth scrolling to links
     $(document).on("scroll", onScroll);
-
+    // alert(betterdocspublic.sticky_toc_offset);
     var toc_links = $(".betterdocs-toc .toc-list a");
     toc_links.on("click", function(e) {
       e.preventDefault();
@@ -144,7 +144,7 @@
       var scrollTopOffset = $target.offset().top;
       $("html, body")
         .stop()
-        .animate({scrollTop: scrollTopOffset - 100}, 'slow',
+        .animate({ scrollTop: scrollTopOffset - betterdocspublic.sticky_toc_offset }, 'slow',
           function() {
             $(document).on("scroll", onScroll);
           }
@@ -173,15 +173,12 @@
 
     // close sticky toc
     $("body").on("click", ".betterdocs-print-btn", function(event) {
-      var entryTitle = document.getElementById("betterdocs-entry-title")
-        .innerHTML;
-      var printContents = document.getElementById("betterdocs-single-content")
-        .innerHTML;
+      var entryTitle = document.getElementById("betterdocs-entry-title").innerHTML;
+      var printContents = document.getElementById("betterdocs-single-content").innerHTML;
       var combined = document.createElement("div");
       combined.innerHTML = "<h1>" + entryTitle + "</h1>" + " " + printContents;
       combined.id = "new-doc-print";
-      var pwidth = document.getElementById("betterdocs-single-content")
-        .offsetWidth;
+      var pwidth = document.getElementById("betterdocs-single-content").offsetWidth;
       var wheight = $(window).height();
       var winPrint = window.open(
         "",
@@ -250,23 +247,18 @@
       });
     });
 
-    var width = $(window).width();
-    if (width < 768) {
-      var docTocTitle = $(
-        ".betterdocs-entry-content .collapsible-sm .toc-title"
-      );
-      docTocTitle.each(function() {
-        $(this).click(function(e) {
-          e.preventDefault();
-          $(".betterdocs-entry-content .collapsible-sm")
-            .children(".angle-icon")
-            .toggle();
-          $(this)
-            .next(".toc-list")
-            .slideToggle();
-        });
+    var docTocTitle = $(".betterdocs-entry-content .collapsible-sm .toc-title");
+    docTocTitle.each(function() {
+      $(this).click(function(e) {
+        e.preventDefault();
+        $(this)
+          .children(".angle-icon")
+          .toggle();
+        $(this)
+          .next(".toc-list")
+          .slideToggle();
       });
-    }
+    });
 
     // single post feedback form modal
     var formModal = $("#betterdocs-form-modal");
@@ -337,6 +329,7 @@
         data: {
           action: "betterdocs_feedback_form_submit",
           form: form.serializeArray(),
+          postID: betterdocspublic.post_id,
           message_name: message_name.val(),
           message_email: message_email.val(),
           message_subject: message_subject.val(),

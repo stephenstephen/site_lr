@@ -43,6 +43,20 @@ function betterdocs_settings_args(){
                     'title' => __( 'General Settings', 'betterdocs' ),
                     'priority' => 10,
                     'fields' => array(
+                        'multiple_kb' => apply_filters( 'betterdocs_multi_kb_settings', array(
+                            'type'        => 'checkbox',
+                            'label'       => __('Enable Multiple Knowledge Base' , 'betterdocs'),
+                            'default'     => '',
+                            'priority'    => 10,
+                            'disable' => true,
+                        )),
+                        // 'disable_root_slug' => array(
+                        //     'type'        => 'checkbox',
+                        //     'label'       => __('Disable BetterDocs Root Slug' , 'betterdocs'),
+                        //     'default'     => '',
+                        //     'priority'    => 10,
+                        //     'help'  => __('Check this option to disable root slug from inner pages.' , 'betterdocs'),
+                        // ),
                         'builtin_doc_page' => array(
                             'type'        => 'checkbox',
                             'label'       => __('Enable Built-in Documentation Page' , 'betterdocs'),
@@ -66,7 +80,7 @@ function betterdocs_settings_args(){
                         ),
                         'docs_slug' => array(
                             'type'      => 'text',
-                            'label'     => __('Documentation Page Slug' , 'betterdocs'),
+                            'label'     => __('BetterDocs Root Slug' , 'betterdocs'),
                             'default'   => 'docs',
                             'priority'	=> 10
                         ),
@@ -233,6 +247,13 @@ function betterdocs_settings_args(){
                                     'default'   => 1,
                                     'priority'	=> 10
                                 ),
+                                'sticky_toc_offset' => array(
+                                    'type'      => 'number',
+                                    'label'     => __('Content Offset' , 'betterdocs'),
+                                    'default'   => 100,
+                                    'priority'	=> 10,
+                                    'description' => __('content offset from top on scroll.' , 'betterdocs'),
+                                ),
                                 'collapsible_toc_mobile' => array(
                                     'type'      => 'checkbox',
                                     'label'     => __('Collapsible TOC on small devices' , 'betterdocs'),
@@ -322,7 +343,7 @@ function betterdocs_settings_args(){
                                     'label'     => __('Email Address' , 'betterdocs'),
                                     'default'   => get_option('admin_email'),
                                     'priority'	=> 10,
-                                    'description' => __('The email address where the feedback form should sent' , 'betterdocs'),
+                                    'description' => __('The email address where the Feedback from will be sent' , 'betterdocs'),
                                 ),
                                 'show_last_update_time' => array(
                                     'type'      => 'checkbox',

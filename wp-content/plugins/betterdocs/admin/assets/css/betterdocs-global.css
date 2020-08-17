@@ -110,4 +110,16 @@
 	width: 80px;
 }
 
+.wp-core-ui .doc-category-kb[multiple] {
+	padding: 10px 0;
+	min-width: 300px; 
+}
+
+.doc-category-kb option {
+	padding: 10px;
+}
+
+#taxonomy-knowledge_base #knowledge_base-add-toggle {
+    display: none;
+}
 /* Notice CSS End */

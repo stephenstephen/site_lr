@@ -9,6 +9,8 @@
  * @subpackage BetterDocs/includes
  */
 
+use function YoastSEO_Vendor\GuzzleHttp\json_decode;
+
 /**
  * Register docs post type and taxonomies class.
  *
@@ -26,6 +28,10 @@ class BetterDocs_Docs_Post_Type {
     public static $menu_position = 5;
     public static $category = 'doc_category';
     public static $tag = 'doc_tag';
+    public static $docs_archive;
+    public static $docs_slug;
+    public static $cat_slug;
+
     /**
      *
      * Initialize the class and start calling our hooks and filters
@@ -34,6 +40,9 @@ class BetterDocs_Docs_Post_Type {
      *
      */
     public static function init() {
+        self::$docs_archive = self::get_docs_archive();
+        self::$docs_slug = self::get_docs_slug();
+        self::$cat_slug = self::docs_category_slug();
         add_action('init', array(__CLASS__, 'register_post'));
         add_filter('rest_api_allowed_post_types', array(__CLASS__, 'rest_api_allowed_post_types'));
         add_action('admin_head', array(__CLASS__, 'admin_order_terms'));
@@ -50,6 +59,68 @@ class BetterDocs_Docs_Post_Type {
         add_action('admin_footer', array(__CLASS__, 'add_script'));
     }
 
+    public static function get_docs_slug() {
+
+        $builtin_doc_page = BetterDocs_DB::get_settings('builtin_doc_page');
+        $docs_slug = BetterDocs_DB::get_settings('docs_slug');
+        $docs_page = BetterDocs_DB::get_settings('docs_page');
+        
+        // $disable_root_slug = BetterDocs_DB::get_settings('disable_root_slug');
+        // if ( $disable_root_slug == 1 ) { 
+        //     $docs_post_slug = '';
+        // }
+        
+        if ( $builtin_doc_page == 1 && $docs_slug ) {
+
+            $docs_post_slug = $docs_slug;
+
+        } elseif ( $builtin_doc_page != 1 && $docs_page ) {
+
+            $post_info = get_post( $docs_page );
+            $docs_post_slug = $post_info->post_name;
+
+        } else {
+
+            $docs_post_slug = 'docs';
+
+        }
+
+        return $docs_post_slug;
+    }
+    
+    public static function get_docs_archive() {
+
+        $builtin_doc_page = BetterDocs_DB::get_settings('builtin_doc_page');
+        $docs_slug = BetterDocs_DB::get_settings('docs_slug');
+        $docs_page = BetterDocs_DB::get_settings('docs_page');
+
+        if ( $builtin_doc_page == 1 && $docs_slug ) {
+
+            $docs_post_slug = $docs_slug;
+
+        } elseif ( $builtin_doc_page != 1 && $docs_page ) {
+
+            $post_info = get_post( $docs_page );
+            $docs_post_slug = $post_info->post_name;
+            
+        } else {
+
+            $docs_post_slug = 'docs';
+            
+        }
+
+        return $docs_post_slug;
+    }
+
+    public static function docs_category_slug() {
+
+        $category_slug = BetterDocs_DB::get_settings('category_slug');
+        if( empty ( $category_slug ) ) {
+            $category_slug = 'docs-category';  
+        } 
+        return $category_slug;
+    } 
+
     /**
      *
      * Register post type and taxonomies
@@ -58,67 +129,9 @@ class BetterDocs_Docs_Post_Type {
      *
      */
     public static function register_post() {
+
         $singular_name = BetterDocs_DB::get_settings('breadcrumb_doc_title');
-        /**
-         * Register post type
-         */
-        $labels = array(
-            'name'               => ($singular_name) ? $singular_name : 'Docs',
-            'singular_name'      => ($singular_name) ? $singular_name : 'Docs',
-            'menu_name'          => esc_html__('BetterDocs', 'betterdocs'),
-            'name_admin_bar'     => esc_html__('Docs', 'betterdocs'),
-            'add_new'            => esc_html__('Add New', 'betterdocs'),
-            'add_new_item'       => esc_html__('Add New Docs', 'betterdocs'),
-            'new_item'           => esc_html__('New Docs', 'betterdocs'),
-            'edit_item'          => esc_html__('Edit Docs', 'betterdocs'),
-            'view_item'          => esc_html__('View Docs', 'betterdocs'),
-            'all_items'          => esc_html__('All Docs', 'betterdocs'),
-            'search_items'       => esc_html__('Search Docs', 'betterdocs'),
-            'parent_item_colorn' => null,
-            'not_found'          => esc_html__('No docs found', 'betterdocs'),
-            'not_found_in_trash' => esc_html__('No docs found in trash', 'betterdocs')
-        );
-        $betterdocs_articles_caps = apply_filters( 'betterdocs_articles_caps', 'edit_posts', 'article_roles' );
-        $args = array(
-            'labels'               => $labels,
-            'description'          => esc_html__('Add new doc from here', 'betterdocs'),
-            'public'               => true,
-            'public_queryable'     => true,
-            'exclude_from_search'  => false,
-            'show_ui'              => true,
-            'show_in_menu'         => false,
-            'show_in_admin_bar'    => $betterdocs_articles_caps,
-            'query_var'            => true,
-            'capability_type'      => 'post',
-            'hierarchical'         => true,
-            'menu_position'        => self::$menu_position,
-            'show_in_rest'         => true,
-            'menu_icon'            => BETTERDOCS_ADMIN_URL . '/assets/img/betterdocs-icon-white.svg', 100,
-            'supports'             => array('title', 'editor', 'thumbnail', 'excerpt', 'author', 'revisions', 'custom-fields', 'comments')
-        );
-        $builtin_doc_page = BetterDocs_DB::get_settings('builtin_doc_page');
-        $docs_slug = BetterDocs_DB::get_settings('docs_slug');
-        $docs_page = BetterDocs_DB::get_settings('docs_page');
         
-        if ( $builtin_doc_page == 1 && $docs_slug ) {
-            $docs_post_slug = $docs_slug;
-        } elseif ( $builtin_doc_page != 1 && $docs_page ) {
-            $post_info = get_post( $docs_page );
-            $docs_post_slug = $post_info->post_name;
-        } elseif ( empty ( $docs_slug ) ) {
-            $docs_post_slug = 'docs';
-        } else {
-            $docs_post_slug = '';
-        }
-        if ($builtin_doc_page == 'off') {
-            $args['has_archive'] = false;
-            $args['rewrite'] = array('slug' => $docs_post_slug, 'with_front' => false);
-        } else {
-            $args['has_archive'] = true;
-            $args['rewrite'] = array('slug' => $docs_post_slug, 'with_front' => false);
-        }
-        register_post_type(self::$post_type, $args);
-        flush_rewrite_rules();
 
         /**
          * Register category taxonomy
@@ -141,16 +154,75 @@ class BetterDocs_Docs_Post_Type {
             'public'            => true,
             'labels'            => $category_labels,
             'show_ui'           => true,
-            'show_in_rest'      => true,
             'show_admin_column' => true,
+            'query_var'             => true,
+            'show_in_rest'          => true,
+            'has_archive' => true,
         );
-        $category_slug = BetterDocs_DB::get_settings('category_slug');
-        if ($builtin_doc_page == 1) {
-            $category_args['rewrite'] = array('slug' => $category_slug, 'with_front' => false);
+
+        $category_args['rewrite'] = apply_filters( 'betterdocs_category_rewrite', array( 'slug' => self::$cat_slug, 'with_front' => false ));
+        
+        register_taxonomy( self::$category, array( self::$post_type ), $category_args );
+
+
+        /**
+         * Register post type
+         */
+        $labels = array(
+            'name'               => ($singular_name) ? $singular_name : 'Docs',
+            'singular_name'      => ($singular_name) ? $singular_name : 'Docs',
+            'menu_name'          => esc_html__('BetterDocs', 'betterdocs'),
+            'name_admin_bar'     => esc_html__('Docs', 'betterdocs'),
+            'add_new'            => esc_html__('Add New', 'betterdocs'),
+            'add_new_item'       => esc_html__('Add New Docs', 'betterdocs'),
+            'new_item'           => esc_html__('New Docs', 'betterdocs'),
+            'edit_item'          => esc_html__('Edit Docs', 'betterdocs'),
+            'view_item'          => esc_html__('View Docs', 'betterdocs'),
+            'all_items'          => esc_html__('All Docs', 'betterdocs'),
+            'search_items'       => esc_html__('Search Docs', 'betterdocs'),
+            'parent_item_colorn' => null,
+            'not_found'          => esc_html__('No docs found', 'betterdocs'),
+            'not_found_in_trash' => esc_html__('No docs found in trash', 'betterdocs')
+        );
+
+        $betterdocs_articles_caps = apply_filters( 'betterdocs_articles_caps', 'edit_posts', 'article_roles' );
+
+        $args = array(
+            'labels'               => $labels,
+            'description'          => esc_html__('Add new doc from here', 'betterdocs'),
+            'public'               => true,
+            'public_queryable'     => true,
+            'exclude_from_search'  => false,
+            'show_ui'              => true,
+            'show_in_menu'         => false,
+            'show_in_admin_bar'    => $betterdocs_articles_caps,
+            'query_var'            => true,
+            'capability_type'      => 'post',
+            'hierarchical'         => true,
+            'menu_position'        => self::$menu_position,
+            'show_in_rest'         => true,
+            'menu_icon'            => BETTERDOCS_ADMIN_URL . '/assets/img/betterdocs-icon-white.svg', 100,
+            'supports'             => array('title', 'editor', 'thumbnail', 'excerpt', 'author', 'revisions', 'custom-fields', 'comments')
+        );
+
+        $builtin_doc_page = BetterDocs_DB::get_settings('builtin_doc_page');
+
+        if ( $builtin_doc_page == 'off' ) {
+
+            $args['has_archive'] = false;
+
         } else {
-            $category_args['rewrite'] = array('slug' => 'docs-category', 'with_front' => false);
+
+            $args['has_archive'] = self::$docs_archive;
+
         }
-        register_taxonomy(self::$category, array(self::$post_type), $category_args);
+        
+
+        $args['rewrite'] = apply_filters('betterdocs_docs_rewrite', array( 'slug' => self::$docs_archive, 'with_front' => false ));
+
+        register_post_type(self::$post_type, $args);
+
+        flush_rewrite_rules();
 
         /**
          * Register tag taxonomy
@@ -172,6 +244,7 @@ class BetterDocs_Docs_Post_Type {
             'choose_from_most_used'      => esc_html__('Choose from the most used tags', 'betterdocs'),
             'menu_name'                  => esc_html__('Tags', 'betterdocs'),
         );
+
         $tag_args = array(
             'hierarchical'          => true,
             'labels'                => $tags_labels,
@@ -181,13 +254,17 @@ class BetterDocs_Docs_Post_Type {
             'query_var'             => true,
             'show_in_rest'          => true
         );
+
         $tag_slug = BetterDocs_DB::get_settings('tag_slug');
+
         if ($tag_slug) {
             $tag_args['rewrite'] = array('slug' => $tag_slug, 'with_front' => false);
         } else {
             $tag_args['rewrite'] = array('slug' => 'docs-tag', 'with_front' => false);
         }
+
         register_taxonomy(self::$tag, array(self::$post_type), $tag_args);
+
     }
 
     /**
@@ -307,11 +384,31 @@ class BetterDocs_Docs_Post_Type {
     }
 
     /**
+     * Default the taxonomy's terms' order if it's not set.
+     *
+     * @param string $tax_slug The taxonomy's slug.
+     */
+    public static function get_manage_docs() {
+        $terms = get_terms('knowledge_base', array('hide_empty' => false));
+        if($terms) {
+            echo '<select name="term_meta[knowledge_base]" id="knowledge_base">';
+            echo '<option> ' . esc_html__('Select an option') . ' </option>';
+            foreach ($terms as $term) {
+                echo '<option value="' . $term->slug . '">' . $term->name . '</option>';
+            }
+            echo '</select>';
+        }
+    }
+
+    /**
      * Add a form field in the new category page
      *
      * @since 1.0.0
     */
     public static function add_doc_category_meta($taxonomy) { ?>
+        <?php 
+        do_action( 'betterdocs_doc_category_add_form_before' );
+        ?>
         <div class="form-field term-group">
             <label for="doc-category-order"><?php esc_html_e('Order', 'betterdocs'); ?></label>
             <input type="number" id="doc-category-order" style="width:100px" name="term_meta[order]" value="">
@@ -350,6 +447,10 @@ class BetterDocs_Docs_Post_Type {
                 }
             }
         }
+        if ( isset($_POST['doc_category_kb']) ) {
+            $doc_category_kb = $_POST['doc_category_kb'];
+            update_term_meta($term_id, "doc_category_knowledge_base", $doc_category_kb);
+        }
     }
 
     /**
@@ -359,10 +460,14 @@ class BetterDocs_Docs_Post_Type {
     */
     public static function update_doc_category_meta($term, $taxonomy) { ?>
         <?php
-         $term_meta = get_option("doc_category_$term->term_id");
-         $cat_order = get_term_meta($term->term_id, 'doc_category_order', true);
-         $cat_icon_id = get_term_meta($term->term_id, 'doc_category_image-id', true);
+        $term_meta = get_option("doc_category_$term->term_id");
+        $cat_order = get_term_meta($term->term_id, 'doc_category_order', true);
+        $cat_icon_id = get_term_meta($term->term_id, 'doc_category_image-id', true);
+
+        do_action( 'betterdocs_doc_category_update_form_before', $term );
+
         ?>
+            
         <tr class="form-field term-group-wrap">
             <th scope="row">
             <label for="doc-category-id"><?php esc_html_e('Category Id', 'betterdocs'); ?></label>
@@ -385,16 +490,15 @@ class BetterDocs_Docs_Post_Type {
                 <label for="doc-category-image-id"><?php esc_html_e('Image', 'betterdocs'); ?></label>
             </th>
             <td>
-                <input type="hidden" id="doc-category-image-id" name="term_meta[image-id]"
-                    value="<?php echo $term_meta['image-id'] ? $term_meta['image-id'] : ''; ?>">
+                <input type="hidden" id="doc-category-image-id" name="term_meta[image-id]" value="<?php echo $cat_icon_id; ?>">
                 <div id="doc-category-image-wrapper">
                     <?php
-                            if ($cat_icon_id) {
-                                echo wp_get_attachment_image($cat_icon_id, 'thumbnail');
-                            } else {
-                                echo '<img src="' . BETTERDOCS_ADMIN_URL . 'assets/img/betterdocs-cat-icon.svg" alt="">';
-                            }
-                            ?>
+                        if ( $cat_icon_id ) {
+                            echo wp_get_attachment_image( $cat_icon_id, 'thumbnail' );
+                        } else {
+                            echo '<img src="' . BETTERDOCS_ADMIN_URL . 'assets/img/betterdocs-cat-icon.svg" alt="">';
+                        }
+                    ?>
                 </div>
                 <p>
                     <input type="button" class="button button-secondary betterdocs_tax_media_button"
@@ -414,16 +518,18 @@ class BetterDocs_Docs_Post_Type {
      *
      * @since 1.0.0
     */
-    public static function updated_doc_category_meta($term_id) {
-        if (isset($_POST['term_meta'])) {
-            $term_meta = get_option("doc_category_$term_id");
+    public static function updated_doc_category_meta( $term_id ) {
+        if ( isset($_POST['term_meta']) ) {
             $cat_keys = array_keys($_POST['term_meta']);
             foreach ($cat_keys as $key) {
                 if (isset($_POST['term_meta'][$key])) {
                     update_term_meta($term_id, "doc_category_$key", $_POST['term_meta'][$key]);
-                    $term_meta[$key] = $_POST['term_meta'][$key];
                 }
             }
+        }
+        if ( isset($_POST['doc_category_kb']) ) {
+            $doc_category_kb = $_POST['doc_category_kb'];
+            update_term_meta($term_id, "doc_category_knowledge_base", $doc_category_kb);
         }
     }
 

@@ -67,7 +67,7 @@ class Component
         wp_register_script(
             'fluentform-advanced',
             $app->publicUrl('js/fluentform-advanced.js'),
-            array('jquery', 'fluent-form-submission'),
+            array('jquery'),
             FLUENTFORM_VERSION,
             true
         );
@@ -88,16 +88,18 @@ class Component
         );
 
         wp_register_script(
-            'selectWoo',
-            $app->publicUrl('libs/selectWoo/selectWoo.full.min.js'),
-            array('jquery'),
-            '1.0.8',
+            'choices',
+            $app->publicUrl('libs/choices/choices.min.js'),
+            array(),
+            '9.0.1',
             true
         );
 
         wp_register_style(
-            'select2',
-            $app->publicUrl('libs/selectWoo/select2.min.css')
+            'ff_choices',
+            $app->publicUrl('css/choices.css'),
+            [],
+            FLUENTFORM_VERSION
         );
 
         do_action('fluentform_scripts_registered');
@@ -266,6 +268,7 @@ class Component
      */
     public function addFluentFormShortCode()
     {
+        
         add_action('wp_enqueue_scripts', array($this, 'registerScripts'), 999);
 
         $this->app->addShortCode('fluentform', function ($atts, $content) {
@@ -494,12 +497,11 @@ class Component
         if (apply_filters('fluentform_load_default_public', true, $form)) {
             wp_enqueue_style('fluentform-public-default');
         }
-        wp_enqueue_script('fluent-form-submission');
-
         /*
          * We will load fluentform-advanced if the form has certain fields or feature
          */
         $this->maybeHasAdvandedFields($form, $formBuilder);
+        wp_enqueue_script('fluent-form-submission');
 
         $stepText = __('Step %activeStep% of %totalStep% - %stepTitle%', 'fluentform');
         $stepText = apply_filters('fluentform_step_string', $stepText);
@@ -515,7 +517,13 @@ class Component
             'stepAnimationDuration' => 350,
             'upload_completed_txt' => __('100% Completed', 'fluentform'),
             'upload_start_txt' => __('0% Completed', 'fluentform'),
-            'uploading_txt' => __('Uploading', 'fluentform')
+            'uploading_txt' => __('Uploading', 'fluentform'),
+            'choice_js_vars' => [
+                'noResultsText' => __('No results found', 'fluentform'),
+                'loadingText' => __('Loading...', 'fluentform'),
+                'noChoicesText' => __('No choices to choose from', 'fluentform'),
+                'itemSelectText' => __('Press to select', 'fluentform'),
+            ]
         ));
 
         wp_localize_script('fluent-form-submission', 'fluentFormVars', $vars);

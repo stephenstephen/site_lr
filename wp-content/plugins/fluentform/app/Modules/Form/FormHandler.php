@@ -168,12 +168,17 @@ class FormHandler
         );
 
         if ($confirmation['redirectTo'] == 'samePage') {
+
+            $confirmation['messageToShow'] = apply_filters('fluentform_submission_message_parse', $confirmation['messageToShow'], $insertId, $formData, $form);
+
+
             $message = ShortCodeParser::parse(
                 $confirmation['messageToShow'],
                 $insertId,
                 $formData,
                 $form
             );
+
 
             $message = $message ? $message : 'The form has been successfully submitted.';
 
@@ -236,7 +241,6 @@ class FormHandler
                 }
             }
 
-
             $message = ShortCodeParser::parse(
                 ArrayHelper::get($confirmation, 'redirectMessage', ''),
                 $insertId,
@@ -275,7 +279,7 @@ class FormHandler
         $originalValidations = FormFieldsParser::getValidations($this->form, $this->formData, $fields);
 
         // Fire an event so that one can hook into it to work with the rules & messages.
-        $validations = apply_filters('fluentform_validations', $originalValidations, $this->form);
+        $validations = apply_filters('fluentform_validations', $originalValidations, $this->form, $this->formData);
 
         /*
          * Clean talk fix for now
@@ -300,7 +304,7 @@ class FormHandler
                 $errors[$attribute] = $rules;
             }
             // Fire an event so that one can hook into it to work with the errors.
-            $errors = $this->app->applyFilters('fluentform_validation_error', $errors, $this->form, $fields);
+            $errors = $this->app->applyFilters('fluentform_validation_error', $errors, $this->form, $fields, $this->formData);
         }
 
         foreach ($fields as $fieldKey => $field) {

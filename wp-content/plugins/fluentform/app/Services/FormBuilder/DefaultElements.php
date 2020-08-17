@@ -173,6 +173,8 @@ $defaultElements = array(
                     ),
                 ),
                 'conditional_logics' => array(),
+                'is_unique' => 'no',
+                'unique_validation_message' => __('This value need to be unique.', 'fluentform')
             ),
             'editor_options' => array(
                 'title' => __('Simple Text', 'fluentform'),
@@ -198,6 +200,8 @@ $defaultElements = array(
                 'admin_field_label' => '',
                 'help_message' => '',
                 'temp_mask' => '',
+                'data-mask-reverse' => 'no',
+                'data-clear-if-not-match' => 'no',
                 'validation_rules' => array(
                     'required' => array(
                         'value' => false,
@@ -533,7 +537,7 @@ $defaultElements = array(
                 ),
                 'calc_value_status' => false,
                 'enable_image_input' => false,
-
+                'enable_select_2' => 'no',
                 'validation_rules' => array(
                     'required' => array(
                         'value' => false,

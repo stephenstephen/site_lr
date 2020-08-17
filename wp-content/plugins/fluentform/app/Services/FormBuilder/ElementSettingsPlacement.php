@@ -52,6 +52,8 @@ $element_settings_placement = array(
             'placeholder',
             'temp_mask',
             'data-mask',
+            'data-mask-reverse',
+            'data-clear-if-not-match',
             'validation_rules',
         ),
         'advanced' => array(
@@ -61,6 +63,8 @@ $element_settings_placement = array(
             'help_message',
             'name',
             'maxlength',
+            'is_unique',
+            'unique_validation_message',
             'conditional_logics',
         ),
         'generalExtras' => array(),
@@ -143,6 +147,7 @@ $element_settings_placement = array(
             'admin_field_label',
             'placeholder',
             'advanced_options',
+            'enable_select_2',
             'validation_rules',
         ),
         'advanced' => array(

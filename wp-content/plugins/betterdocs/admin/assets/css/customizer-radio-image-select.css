@@ -20,7 +20,6 @@
     opacity: 0.8;
 }
 .customize-control-betterdocs-radio-image .image.ui-buttonset input[checked="checked"] + label img {
-    border-color: #15c7a4;
     opacity: 1;
 }
 .customize-control-betterdocs-radio-image label.ui-state-active img {
@@ -35,8 +34,9 @@
     background: #dedede;
     opacity: 1;
 }
-.customize-control-betterdocs-radio-image label.ui-state-hover img {
-    opacity: 0.9; 
+.customize-control-betterdocs-radio-image label.ui-state-hover img,
+.customize-control-betterdocs-radio-image label.ui-state-active.ui-state-hover img {
+    border: 2px solid #1e73be;
 }
 .customize-control-radio-buttonset label.ui-corner-left {
     border-radius: 3px 0 0 3px;

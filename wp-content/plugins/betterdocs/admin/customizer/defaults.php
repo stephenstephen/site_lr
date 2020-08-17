@@ -51,7 +51,6 @@ function betterdocs_get_option_defaults() {
 		'betterdocs_doc_page_column_content_space_title' => '15',
 		'betterdocs_doc_page_column_content_space_desc' => '15',
 		'betterdocs_doc_page_column_content_space_counter' => '0',
-		'betterdocs_doc_page_cat_icon_size_l2' => '80',
 		'betterdocs_doc_page_cat_icon_size_layout1' => '32',
 		'betterdocs_doc_page_cat_icon_size_layout2' => '80',
 		'betterdocs_doc_page_cat_title_font_size' => '20',

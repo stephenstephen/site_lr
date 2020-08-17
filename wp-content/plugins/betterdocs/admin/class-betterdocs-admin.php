@@ -208,6 +208,7 @@ class BetterDocs_Admin {
 	*/
 	public function menu_page(){		
 		$settings_class = new betterdocs_settings();
+		$singular_name = BetterDocs_DB::get_settings('breadcrumb_doc_title');
 
 		$betterdocs_articles_caps = apply_filters( 'betterdocs_articles_caps', 'edit_posts', 'article_roles' );
 		$betterdocs_terms_caps = apply_filters( 'betterdocs_terms_caps', 'delete_others_posts', 'article_roles' );
@@ -244,10 +245,11 @@ class BetterDocs_Admin {
 			$this->menu_slug, __('Categories', 'betterdocs'), __('Categories', 'betterdocs'), 
 			$betterdocs_terms_caps, 'edit-tags.php?taxonomy=doc_category&post_type=docs'
 		);
-		add_submenu_page( 
+		add_submenu_page(
 			$this->menu_slug, __('Tags', 'betterdocs'), __('Tags', 'betterdocs'), 
 			$betterdocs_terms_caps, 'edit-tags.php?taxonomy=doc_tag&post_type=docs'
 		);
+		
 		foreach( $settings as $slug => $setting ) {
 			$cap  = isset( $setting['capability'] ) ? $setting['capability'] : 'delete_users';
 			$hook = add_submenu_page( $this->menu_slug, $setting['title'], $setting['title'], $cap, $slug, $setting['callback'] );
@@ -280,6 +282,9 @@ class BetterDocs_Admin {
 			}
 			if( $current_screen->id === 'edit-doc_tag' ) {
 				$submenu_file = 'edit-tags.php?taxonomy=doc_tag&post_type=docs';
+			}
+			if( $current_screen->id === 'edit-knowledge_base' ) {
+				$submenu_file = 'edit-tags.php?taxonomy=knowledge_base&post_type=docs';
 			}
 		}
 		if( 'betterdocs_page_betterdocs-settings' == $current_screen->id ) {
@@ -395,4 +400,5 @@ class BetterDocs_Admin {
 		}
 
 	}
+
 }

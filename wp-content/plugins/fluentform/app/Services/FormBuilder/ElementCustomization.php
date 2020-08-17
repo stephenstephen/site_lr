@@ -135,6 +135,11 @@ $element_customization_settings = array(
         'label' => __('Options', 'fluentform'),
         'help_text' => __('Create visual options for the field and checkmark them for default selection.', 'fluentform'),
     ),
+    'enable_select_2' => array(
+        'template' => 'inputYesNoCheckBox',
+        'label' => __('Enable Searchable Smart Options', 'fluentform'),
+        'help_text' => __('If you enable this then options will be searchable by select2 js library', 'fluentform'),
+    ),
     'pricing_options' => array(
         'template' => 'pricingOptions',
         'label' => __('Payment Settings', 'fluentform'),
@@ -388,6 +393,26 @@ $element_customization_settings = array(
             'operator' => '=='
         )
     ),
+    'data-mask-reverse' => array(
+        'template' => 'inputYesNoCheckBox',
+        'label' => __('Activating a reversible mask', 'fluentform'),
+        'help_text' => __('If you enable this then it the mask will work as reverse', 'fluentform'),
+        'dependency' => array(
+            'depends_on' => 'settings/temp_mask',
+            'value' => 'custom',
+            'operator' => '=='
+        )
+    ),
+    'data-clear-if-not-match' => array(
+        'template' => 'inputYesNoCheckBox',
+        'label' => __('Clear if not match', 'fluentform'),
+        'help_text' => __('Clear value if not match the mask', 'fluentform'),
+        'dependency' => array(
+            'depends_on' => 'settings/temp_mask',
+            'value' => 'custom',
+            'operator' => '=='
+        )
+    ),
     'temp_mask' => array(
         'template' => 'select',
         'label' => __('Mask Input', 'fluentform'),
@@ -488,19 +513,9 @@ $element_customization_settings = array(
         'help_text' => __('Provide Input Suffix Label. It will show in the input field as suffix label', 'fluentform')
     ),
     'is_unique' => array(
-        'template' => 'select',
+        'template' => 'inputYesNoCheckBox',
         'label' => __('Validate as Unique', 'fluentform'),
-        'help_text' => __('If you make it unique then it will validate as unique from previous submissions of this form', 'fluentform'),
-        'options' => array(
-            array(
-                'value' => 'no',
-                'label' => __('No', 'fluentform'),
-            ),
-            array(
-                'value' => 'yes',
-                'label' => __('Yes', 'fluentform'),
-            )
-        )
+        'help_text' => __('If you make it unique then it will validate as unique from previous submissions of this form', 'fluentform')
     ),
     'show_text' => array(
         'template' => 'select',

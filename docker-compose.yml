@@ -11,7 +11,7 @@ services:
       - WORDPRESS_DB_PASSWORD:admin
       - WORDPRESS_DB_NAME:wordpress
     volumes:
-      - C:/wamp64/www/Land_Ressources/wp:/var/www/html:rw
+      - /opt/lampp/htdocs/site_lr:/var/www/html:rw
     links:
       - db:db
 
