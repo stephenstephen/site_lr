@@ -78,11 +78,12 @@
 				customizer_controls_show(setting,'betterdocs_doc_page_cat_icon_size_layout2','layout-2');
 				customizer_controls_show(setting,'betterdocs_doc_page_cat_title_border_color','layout-1');
 				customizer_controls_show(setting,'betterdocs_doc_page_cat_title_color','layout-1');
-				customizer_controls_hide(setting,'betterdocs_doc_page_cat_title_color2','layout-1');
+				customizer_controls_show(setting,'betterdocs_doc_page_cat_title_color2', 'layout-2, layout-3, layout-4');
 				customizer_controls_show(setting,'betterdocs_doc_page_item_count_color','layout-1');
 				customizer_controls_show(setting,'betterdocs_doc_page_item_count_color_layout2','layout-2,layout-3,layout-4');
 				customizer_controls_show(setting,'betterdocs_doc_page_item_count_bg_color','layout-1');
 				customizer_controls_show(setting,'betterdocs_doc_page_item_counter_size','layout-1');
+				customizer_controls_show(setting,'betterdocs_doc_page_item_count_inner_bg_color','layout-1');
 				customizer_controls_show(setting,'betterdocs_doc_page_cat_desc','layout-2');
 				customizer_controls_show(setting,'betterdocs_doc_page_article_list_settings','layout-1,layout-4');
 				customizer_controls_show(setting,'betterdocs_doc_page_article_list_color','layout-1,layout-4');
@@ -118,13 +119,18 @@
 				customizer_controls_show(setting,'betterdocs_doc_page_column_bg_color','layout-1,layout-4');
 				customizer_controls_show(setting,'betterdocs_doc_page_column_bg_color2','layout-2,layout-3');
 				customizer_controls_hide(setting,'betterdocs_doc_page_column_hover_bg_color','layout-1');
-				customizer_controls_show(setting,'betterdocs_doc_page_cat_icon_size_l2','layout-2');
 
 				customizer_controls_show(setting,'betterdocs_doc_page_column_content_space','layout-2,layout-3,layout-4');
 				customizer_controls_show(setting,'betterdocs_doc_page_column_content_space_image','layout-2,layout-3,layout-4');
 				customizer_controls_show(setting,'betterdocs_doc_page_column_content_space_title','layout-2,layout-3,layout-4');
 				customizer_controls_show(setting,'betterdocs_doc_page_column_content_space_desc','layout-2,layout-3,layout-4');
 				customizer_controls_show(setting,'betterdocs_doc_page_column_content_space_counter','layout-2,layout-3,layout-4');
+				
+				customizer_controls_show(setting,'betterdocs_doc_page_article_subcategory_color','layout-1');
+				customizer_controls_show(setting,'betterdocs_doc_page_article_subcategory_hover_color','layout-1');
+				customizer_controls_show(setting,'betterdocs_doc_page_article_subcategory_font_size','layout-1');
+				customizer_controls_show(setting,'betterdocs_doc_page_subcategory_icon_color','layout-1');
+				customizer_controls_show(setting,'betterdocs_doc_page_subcategory_icon_font_size','layout-1');
 			});
 			wp.customize( 'betterdocs_single_layout_select', function( setting ) {
 				customizer_controls_show(setting,'betterdocs_sidebar_borderr','layout-1');
@@ -171,13 +177,17 @@
 			});
 			wp.customize( 'betterdocs_live_search_heading_switch', function( setting ) {
 				customizer_conditional_setting_return_toggle(setting,'betterdocs_live_search_heading',true);
+				customizer_conditional_setting_return_toggle(setting,'betterdocs_live_search_heading_font_color',true);
 				customizer_conditional_setting_return_toggle(setting,'betterdocs_live_search_heading_font_size',true);
 				customizer_conditional_setting_return_toggle(setting,'betterdocs_live_search_subheading',true);
 				customizer_conditional_setting_return_toggle(setting,'betterdocs_live_search_subheading_font_size',true);
+				customizer_conditional_setting_return_toggle(setting,'betterdocs_live_search_subheading_font_color',true);
+				customizer_conditional_setting_return_toggle(setting,'betterdocs_search_heading_margin',true);
 				customizer_conditional_setting_return_toggle(setting,'betterdocs_search_heading_margin_top',true);
 				customizer_conditional_setting_return_toggle(setting,'betterdocs_search_heading_margin_right',true);
 				customizer_conditional_setting_return_toggle(setting,'betterdocs_search_heading_margin_bottom',true);
 				customizer_conditional_setting_return_toggle(setting,'betterdocs_search_heading_margin_left',true);
+				customizer_conditional_setting_return_toggle(setting,'betterdocs_search_subheading_margin',true);
 				customizer_conditional_setting_return_toggle(setting,'betterdocs_search_subheading_margin_top',true);
 				customizer_conditional_setting_return_toggle(setting,'betterdocs_search_subheading_margin_right',true);
 				customizer_conditional_setting_return_toggle(setting,'betterdocs_search_subheading_margin_bottom',true);

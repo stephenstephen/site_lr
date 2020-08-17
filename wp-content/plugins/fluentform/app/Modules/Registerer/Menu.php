@@ -294,11 +294,22 @@ class Menu
                 array($this, 'renderFormAdminRoute')
             );
 
+            $entriesTitle =  __('Entries', 'fluentform');
+
+            if(Helper::isFluentAdminPage()) {
+                $entriesCount = wpFluent()->table('fluentform_submissions')
+                    ->where('status', 'unread')
+                    ->count();
+                if($entriesCount) {
+                    $entriesTitle .= ' <span class="ff_unread_count" style="background: #ca4a20;color: white;border-radius: 8px;padding: 1px 8px;">'.$entriesCount.'</span>';
+                }
+            }
+
             // Register entries intermediary page
             add_submenu_page(
                 'fluent_forms',
-                __('Entries', 'fluentform'),
-                __('Entries', 'fluentform'),
+                $entriesTitle,
+                $entriesTitle,
                 $settingsCapability,
                 'fluent_forms_all_entries',
                 array($this, 'renderAllEntriesAdminRoute')
@@ -321,8 +332,8 @@ class Menu
         // Register Add-Ons
         add_submenu_page(
             'fluent_forms',
-            __('Modules', 'fluentform'),
-            __('Modules', 'fluentform'),
+            __('Integration Modules', 'fluentform'),
+            __('Integration Modules', 'fluentform'),
             $dashBoardCapability,
             'fluent_form_add_ons',
             array($this, 'renderAddOns')
@@ -332,8 +343,8 @@ class Menu
             // Register global settings sub menu page.
             add_submenu_page(
                 'fluent_forms',
-                __('Settings', 'fluentform'),
-                __('Settings', 'fluentform'),
+                __('Global Settings', 'fluentform'),
+                __('Global Settings', 'fluentform'),
                 $settingsCapability,
                 'fluent_forms_settings',
                 array($this, 'renderGlobalSettings')
@@ -591,6 +602,7 @@ class Menu
 
             if ($formFields) {
                 $formFields = json_decode($formFields, true);
+
                 foreach ($formFields['fields'] as $index => $formField) {
                     $formFields['fields'][$index] = apply_filters(
                         'fluentform_editor_init_element_' . $formField['element'], $formField, $form

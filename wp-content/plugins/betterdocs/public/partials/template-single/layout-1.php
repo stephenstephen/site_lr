@@ -27,7 +27,11 @@ $output = betterdocs_generate_output();
         <aside id="betterdocs-sidebar">
             <div class="betterdocs-sidebar-content">
 				<?php
-				echo do_shortcode( '[betterdocs_category_grid sidebar_list="true" posts_per_grid="-1"]' );
+
+				$shortcode = do_shortcode( '[betterdocs_category_grid sidebar_list="true" posts_per_grid="-1"]' );
+
+				echo apply_filters( 'betterdocs_sidebar_category_shortcode', $shortcode );
+				
                 ?>
 			</div>
 			<?php

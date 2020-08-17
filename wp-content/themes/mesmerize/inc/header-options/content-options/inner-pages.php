@@ -97,7 +97,16 @@ function mesmerize_print_inner_pages_header_content()
         <div class="row header-description-row">
     <div class="col-xs col-xs-12">
         <h1 class="hero-title">
-            <?php echo mesmerize_title(); ?>
+            <?php
+
+                if (strlen(mesmerize_title()) > 100) {
+                    echo substr(mesmerize_title(), 0, 100)."...";
+                }else{
+                    echo mesmerize_title(); 
+                }
+            
+            
+            ?>
         </h1>
         <?php
         $show_subtitle = get_theme_mod('inner_header_show_subtitle', true);

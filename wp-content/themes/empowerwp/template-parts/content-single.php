@@ -10,6 +10,8 @@
 				array( "class" => "space-bottom-small space-bottom-xs" ) );
 		}
 
+		echo the_field('contenu');
+
 		the_content();
 
 		wp_link_pages( array(
@@ -29,14 +31,23 @@
 
 
 <?php
+// the_post_navigation( array(
+// 	'next_text' => '<span class="meta-nav title-blue-color" aria-hidden="true">' . esc_html__( 'Next:', 'empowerwp' ) . '</span> ' .
+// 	               '<span class="screen-reader-text">' . esc_html__( 'Next post:', 'empowerwp' ) . '</span> ' .
+// 	               '<span class="post-title crop">%title</span><i class="font-icon-post title-blue-color fa fa-angle-double-right"></i>',
+// 	'prev_text' => '<i class="font-icon-post title-blue-color fa fa-angle-double-left"></i>' .
+// 	               '<span class="meta-nav title-blue-color" aria-hidden="true">' . esc_html__( 'Previous:', 'empowerwp' ) . '</span> ' .
+// 	               '<span class="screen-reader-text">' . esc_html__( 'Previous post:', 'empowerwp' ) . '</span> ' .
+// 	               '<span class="post-title crop">%title</span>',
+// ) );
+
 the_post_navigation( array(
 	'next_text' => '<span class="meta-nav" aria-hidden="true">' . esc_html__( 'Next:', 'empowerwp' ) . '</span> ' .
 	               '<span class="screen-reader-text">' . esc_html__( 'Next post:', 'empowerwp' ) . '</span> ' .
-	               '<span class="post-title">%title</span><i class="font-icon-post fa fa-angle-double-right"></i>',
+	               '<i class="font-icon-post fa fa-angle-double-right"></i>',
 	'prev_text' => '<i class="font-icon-post fa fa-angle-double-left"></i>' .
 	               '<span class="meta-nav" aria-hidden="true">' . esc_html__( 'Previous:', 'empowerwp' ) . '</span> ' .
-	               '<span class="screen-reader-text">' . esc_html__( 'Previous post:', 'empowerwp' ) . '</span> ' .
-	               '<span class="post-title">%title</span>',
+	               '<span class="screen-reader-text">' . esc_html__( 'Previous post:', 'empowerwp' ) . '</span> ',
 ) );
 ?>
 

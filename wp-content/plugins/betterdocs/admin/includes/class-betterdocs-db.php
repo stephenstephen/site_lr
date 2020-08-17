@@ -35,6 +35,7 @@ class BetterDocs_DB {
             'enable_toc' => 1,
             'toc_hierarchy' => 1,
             'enable_sticky_toc' => 1,
+            'sticky_toc_offset' => 100,
             'collapsible_toc_mobile' => '',
             'enable_post_title' => 1,
             'title_link_ctc' => 1,

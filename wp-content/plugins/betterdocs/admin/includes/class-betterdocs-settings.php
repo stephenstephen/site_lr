@@ -225,9 +225,9 @@ class BetterDocs_Settings {
 
         if( isset( $_POST['form_data'] ) ) {
             self::save_settings( $_POST['form_data'] );
-            echo 'success';
+            wp_send_json_success("success");
         } else {
-            echo 'error';
+            wp_send_json_error("error");
         }
 
         die;

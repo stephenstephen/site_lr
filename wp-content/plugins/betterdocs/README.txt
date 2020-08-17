@@ -4,9 +4,9 @@ Donate link: https://wpdeveloper.net
 Tags:  knowledge base, docs, documentation, documents, wiki, faq page, doc, knowledge, table of content, TOC, knowledgebase, faqs, doc page, best documentation plugin, support ticket, customer support, instant answer bot, bot, help articles
 Requires at least: 4.0
 Tested up to: 5.4
-Stable tag: 1.3.2
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Stable tag: 1.3.4
+License: GPLv3 or later
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 A better documentation and knowledgebase plugin for WordPress
 
@@ -121,6 +121,22 @@ Yes, it will work with any standard WordPress theme.
 
 
 == Changelog ==
+
+= 1.3.4 - 09/08/2020 =
+- Improvement: Logged in users data automatically filled in for Single Doc Feedback form
+- Fixed: Collapsible TOC not working on smaller devices
+- Fixed: 'Save Settings' conflict with Flexia theme
+- Fixed: Category Icon reverting to default
+- Fixed: 'Sidebar Category List' not getting disabled
+- Removed: Upsell notices removed from PRO
+- Few minor bugfix and improvements
+
+= 1.3.3 - 27/07/2020 =
+- Fixed: BetterDocs TOC Scrolling issue with Fixed Header Menu
+- Fixed: Duplicate 'Column Background Color' Settings in the Customizer
+- Fixed: Hover color not changing on archive pages
+- Improved: Updated Selector Library
+- Few minor bugfix and improvements
 
 = 1.3.2 - 10/06/2020 =
 - Improvement: Added option to change Inner Circle Background color for Item Count

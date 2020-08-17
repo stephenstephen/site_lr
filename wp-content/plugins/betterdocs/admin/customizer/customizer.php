@@ -37,8 +37,6 @@ function betterdocs_customize_register( $wp_customize ) {
 		'title'      => __('Docs Page','betterdocs'),
 		'priority'   => 100
 	) );
-	
-	// Docs page layout select 
 
 	$wp_customize->add_setting( 'betterdocs_docs_layout_select' , array(
 		'default'     => $defaults['betterdocs_docs_layout_select'],
@@ -54,8 +52,8 @@ function betterdocs_customize_register( $wp_customize ) {
 			'type'     => 'betterdocs-radio-image',
 			'settings'		=> 'betterdocs_docs_layout_select',
 			'section'		=> 'betterdocs_doc_page_settings',
-			'label'			=> __( 'Select Layout', 'theme-slug' ),
-			'priority' => 1,
+			'label'			=> __( 'Select Category Layout', 'theme-slug' ),
+			'priority' => 2,
 			'choices'		=> apply_filters('betterdocs_docs_layout_select_choices', array(
 				'layout-1' 	=> array(
 					'image' => BETTERDOCS_ADMIN_URL . 'assets/img/docs-layout-1.png',
@@ -624,7 +622,7 @@ function betterdocs_customize_register( $wp_customize ) {
 		'type'     => 'betterdocs-range-value',
 		'section'  => 'betterdocs_doc_page_settings',
 		'settings' => 'betterdocs_doc_page_cat_icon_size_layout1',
-		'label'    => __( 'Category Icon Size', 'betterdocs' ),
+		'label'    => __( 'Icon Size', 'betterdocs' ),
 		'priority' => 23,
 		'input_attrs' => array(
 			'class' => '',
@@ -649,7 +647,7 @@ function betterdocs_customize_register( $wp_customize ) {
 		'type'     => 'betterdocs-range-value',
 		'section'  => 'betterdocs_doc_page_settings',
 		'settings' => 'betterdocs_doc_page_cat_icon_size_layout2',
-		'label'    => __( 'Category Icon Size', 'betterdocs' ),
+		'label'    => __( 'Icon Size', 'betterdocs' ),
 		'priority' => 24,
 		'input_attrs' => array(
 			'class' => '',
@@ -759,31 +757,6 @@ function betterdocs_customize_register( $wp_customize ) {
 		'priority' => 24,
 		'input_attrs' => array(
 			'class' => 'betterdocs_doc_page_column_borderr betterdocs-dimension',
-		),
-	) ) );
-
-	// Category Icon Size
-
-	$wp_customize->add_setting( 'betterdocs_doc_page_cat_icon_size_l2', array(
-		'default'       => $defaults['betterdocs_doc_page_cat_icon_size_l2'],
-		'capability'    => 'edit_theme_options',
-		'transport' => 'postMessage',
-		'sanitize_callback' => 'betterdocs_sanitize_integer'
-	) );
-
-	$wp_customize->add_control( new BetterDocs_Customizer_Range_Value_Control(
-		$wp_customize, 'betterdocs_doc_page_cat_icon_size_l2', array(
-		'type'     => 'betterdocs-range-value',
-		'section'  => 'betterdocs_doc_page_settings',
-		'settings' => 'betterdocs_doc_page_cat_icon_size_l2',
-		'label'    => __( 'Category Icon Size', 'betterdocs' ),
-		'priority' => 24,
-		'input_attrs' => array(
-			'class' => '',
-			'min'    => 0,
-			'max'    => 200,
-			'step'   => 1,
-			'suffix' => 'px', //optional suffix
 		),
 	) ) );
 
@@ -909,7 +882,7 @@ function betterdocs_customize_register( $wp_customize ) {
 		'priority' => 28
 	)));
 
-	// Item Count Color 
+	// Category Description Color
 
 	$wp_customize->add_setting( 'betterdocs_doc_page_cat_desc_color' , array(
 		'default'     => $defaults['betterdocs_doc_page_cat_desc_color'],
@@ -959,7 +932,7 @@ function betterdocs_customize_register( $wp_customize ) {
 		$wp_customize,
 		'betterdocs_doc_page_item_count_color',
 		array(
-			'label'      => __( 'Color', 'betterdocs' ),
+			'label'      => __( 'Item Count Color', 'betterdocs' ),
 			'section'    => 'betterdocs_doc_page_settings',
 			'settings'   => 'betterdocs_doc_page_item_count_color',
 			'priority' => 28
@@ -978,7 +951,7 @@ function betterdocs_customize_register( $wp_customize ) {
 		$wp_customize,
 		'betterdocs_doc_page_item_count_color_layout2',
 		array(
-			'label'      => __( 'Color', 'betterdocs' ),
+			'label'      => __( 'Item Count Color', 'betterdocs' ),
 			'section'    => 'betterdocs_doc_page_settings',
 			'settings'   => 'betterdocs_doc_page_item_count_color_layout2',
 			'priority' => 29

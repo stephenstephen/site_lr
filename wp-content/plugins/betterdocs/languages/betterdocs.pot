@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: BetterDocs\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-11 14:16+0000\n"
+"POT-Creation-Date: 2020-07-21 03:48+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -15,172 +15,172 @@ msgstr ""
 "X-Generator: Loco https://localise.biz/\n"
 "X-Loco-Version: 2.3.1; wp-5.3"
 
-#. Name of the plugin
-#: includes/class-betterdocs-docs-post-type.php:68
-#: public/partials/template-single/layout-1.php:155
-msgid "BetterDocs"
-msgstr ""
-
-#: includes/class-betterdocs-docs-post-type.php:69
-msgid "Docs"
-msgstr ""
-
-#: includes/class-betterdocs-docs-post-type.php:70
-#: admin/class-betterdocs-admin.php:242 admin/class-betterdocs-admin.php:242
-msgid "Add New"
-msgstr ""
-
-#: includes/class-betterdocs-docs-post-type.php:71
-msgid "Add New Docs"
-msgstr ""
-
-#: includes/class-betterdocs-docs-post-type.php:72
-msgid "New Docs"
-msgstr ""
-
-#: includes/class-betterdocs-docs-post-type.php:73
-msgid "Edit Docs"
-msgstr ""
-
-#: includes/class-betterdocs-docs-post-type.php:74
-msgid "View Docs"
-msgstr ""
-
-#: includes/class-betterdocs-docs-post-type.php:75
-msgid "All Docs"
-msgstr ""
-
-#: includes/class-betterdocs-docs-post-type.php:76
-msgid "Search Docs"
-msgstr ""
-
-#: includes/class-betterdocs-docs-post-type.php:78
-msgid "No docs found"
-msgstr ""
-
-#: includes/class-betterdocs-docs-post-type.php:79
-msgid "No docs found in trash"
-msgstr ""
-
-#: includes/class-betterdocs-docs-post-type.php:84
-msgid "Add new doc from here"
-msgstr ""
-
-#: includes/class-betterdocs-docs-post-type.php:127
-#: includes/class-betterdocs-docs-post-type.php:129
+#: includes/class-betterdocs-docs-post-type.php:128
+#: includes/class-betterdocs-docs-post-type.php:130
 msgid "Docs Categories"
 msgstr ""
 
-#: includes/class-betterdocs-docs-post-type.php:128
+#: includes/class-betterdocs-docs-post-type.php:129
 msgid "Docs Category"
 msgstr ""
 
-#: includes/class-betterdocs-docs-post-type.php:130
+#: includes/class-betterdocs-docs-post-type.php:131
 msgid "Parent Docs Category"
 msgstr ""
 
-#: includes/class-betterdocs-docs-post-type.php:131
+#: includes/class-betterdocs-docs-post-type.php:132
 msgid "Parent Docs Category:"
 msgstr ""
 
-#: includes/class-betterdocs-docs-post-type.php:132
+#: includes/class-betterdocs-docs-post-type.php:133
 msgid "Edit Category"
 msgstr ""
 
-#: includes/class-betterdocs-docs-post-type.php:133
+#: includes/class-betterdocs-docs-post-type.php:134
 msgid "Update Category"
 msgstr ""
 
-#: includes/class-betterdocs-docs-post-type.php:134
+#: includes/class-betterdocs-docs-post-type.php:135
 msgid "Add New Docs Category"
 msgstr ""
 
-#: includes/class-betterdocs-docs-post-type.php:135
+#: includes/class-betterdocs-docs-post-type.php:136
 msgid "New Docs Name"
 msgstr ""
 
-#: includes/class-betterdocs-docs-post-type.php:136
-#: admin/class-betterdocs-admin.php:244 admin/class-betterdocs-admin.php:244
+#: includes/class-betterdocs-docs-post-type.php:137
+#: admin/class-betterdocs-admin.php:245 admin/class-betterdocs-admin.php:245
 msgid "Categories"
 msgstr ""
 
-#: includes/class-betterdocs-docs-post-type.php:159
-msgid "Docs Tags"
-msgstr ""
-
-#: includes/class-betterdocs-docs-post-type.php:160
-msgid "Tag"
-msgstr ""
-
-#: includes/class-betterdocs-docs-post-type.php:161
-msgid "Search Tags"
-msgstr ""
-
+#. Name of the plugin
 #: includes/class-betterdocs-docs-post-type.php:162
-msgid "Popular Tags"
+#: public/partials/template-single/layout-1.php:167
+msgid "BetterDocs"
 msgstr ""
 
 #: includes/class-betterdocs-docs-post-type.php:163
-msgid "All Tags"
+msgid "Docs"
+msgstr ""
+
+#: includes/class-betterdocs-docs-post-type.php:164
+#: admin/class-betterdocs-admin.php:243 admin/class-betterdocs-admin.php:243
+msgid "Add New"
+msgstr ""
+
+#: includes/class-betterdocs-docs-post-type.php:165
+msgid "Add New Docs"
 msgstr ""
 
 #: includes/class-betterdocs-docs-post-type.php:166
-msgid "Edit Tag"
+msgid "New Docs"
 msgstr ""
 
 #: includes/class-betterdocs-docs-post-type.php:167
-msgid "Update Tag"
+msgid "Edit Docs"
 msgstr ""
 
 #: includes/class-betterdocs-docs-post-type.php:168
-msgid "Add New Tag"
+msgid "View Docs"
 msgstr ""
 
 #: includes/class-betterdocs-docs-post-type.php:169
-msgid "New Tag Name"
+msgid "All Docs"
 msgstr ""
 
 #: includes/class-betterdocs-docs-post-type.php:170
-msgid "Separate tags with commas"
-msgstr ""
-
-#: includes/class-betterdocs-docs-post-type.php:171
-msgid "Add or remove tags"
+msgid "Search Docs"
 msgstr ""
 
 #: includes/class-betterdocs-docs-post-type.php:172
-msgid "Choose from the most used tags"
+msgid "No docs found"
 msgstr ""
 
 #: includes/class-betterdocs-docs-post-type.php:173
-#: admin/class-betterdocs-admin.php:248 admin/class-betterdocs-admin.php:248
+msgid "No docs found in trash"
+msgstr ""
+
+#: includes/class-betterdocs-docs-post-type.php:180
+msgid "Add new doc from here"
+msgstr ""
+
+#: includes/class-betterdocs-docs-post-type.php:208
+msgid "Docs Tags"
+msgstr ""
+
+#: includes/class-betterdocs-docs-post-type.php:209
+msgid "Tag"
+msgstr ""
+
+#: includes/class-betterdocs-docs-post-type.php:210
+msgid "Search Tags"
+msgstr ""
+
+#: includes/class-betterdocs-docs-post-type.php:211
+msgid "Popular Tags"
+msgstr ""
+
+#: includes/class-betterdocs-docs-post-type.php:212
+msgid "All Tags"
+msgstr ""
+
+#: includes/class-betterdocs-docs-post-type.php:215
+msgid "Edit Tag"
+msgstr ""
+
+#: includes/class-betterdocs-docs-post-type.php:216
+msgid "Update Tag"
+msgstr ""
+
+#: includes/class-betterdocs-docs-post-type.php:217
+msgid "Add New Tag"
+msgstr ""
+
+#: includes/class-betterdocs-docs-post-type.php:218
+msgid "New Tag Name"
+msgstr ""
+
+#: includes/class-betterdocs-docs-post-type.php:219
+msgid "Separate tags with commas"
+msgstr ""
+
+#: includes/class-betterdocs-docs-post-type.php:220
+msgid "Add or remove tags"
+msgstr ""
+
+#: includes/class-betterdocs-docs-post-type.php:221
+msgid "Choose from the most used tags"
+msgstr ""
+
+#: includes/class-betterdocs-docs-post-type.php:222
+#: admin/class-betterdocs-admin.php:249 admin/class-betterdocs-admin.php:249
 msgid "Tags"
 msgstr ""
 
-#: includes/class-betterdocs-docs-post-type.php:316
-#: includes/class-betterdocs-docs-post-type.php:376
+#: includes/class-betterdocs-docs-post-type.php:390
+#: includes/class-betterdocs-docs-post-type.php:458
 msgid "Order"
 msgstr ""
 
-#: includes/class-betterdocs-docs-post-type.php:320
+#: includes/class-betterdocs-docs-post-type.php:394
 msgid "Category Icon"
 msgstr ""
 
-#: includes/class-betterdocs-docs-post-type.php:328
 #: includes/class-betterdocs-docs-post-type.php:402
+#: includes/class-betterdocs-docs-post-type.php:484
 msgid "Add Image"
 msgstr ""
 
-#: includes/class-betterdocs-docs-post-type.php:331
 #: includes/class-betterdocs-docs-post-type.php:405
+#: includes/class-betterdocs-docs-post-type.php:487
 msgid "Remove Image"
 msgstr ""
 
-#: includes/class-betterdocs-docs-post-type.php:368
+#: includes/class-betterdocs-docs-post-type.php:450
 msgid "Category Id"
 msgstr ""
 
-#: includes/class-betterdocs-docs-post-type.php:385
+#: includes/class-betterdocs-docs-post-type.php:467
 msgid "Image"
 msgstr ""
 
@@ -192,23 +192,23 @@ msgstr ""
 msgid "ago"
 msgstr ""
 
-#: admin/class-betterdocs-admin.php:218
+#: admin/class-betterdocs-admin.php:219
 msgid "Quick Setup"
 msgstr ""
 
-#: admin/class-betterdocs-admin.php:223 public/class-betterdocs-public.php:375
+#: admin/class-betterdocs-admin.php:224 public/class-betterdocs-public.php:411
 msgid "Settings"
 msgstr ""
 
-#: admin/class-betterdocs-admin.php:239
+#: admin/class-betterdocs-admin.php:240
 msgid "All Articles"
 msgstr ""
 
-#: admin/class-betterdocs-admin.php:380 admin/class-betterdocs-admin.php:391
+#: admin/class-betterdocs-admin.php:385 admin/class-betterdocs-admin.php:396
 msgid "Visit Documentation"
 msgstr ""
 
-#: public/betterdocs-breadcrumbs.php:60
+#: public/betterdocs-breadcrumbs.php:66
 msgid "Home"
 msgstr ""
 
@@ -216,64 +216,63 @@ msgstr ""
 msgid "Copied"
 msgstr ""
 
-#: public/class-betterdocs-public.php:332
+#: public/class-betterdocs-public.php:368
 msgid "Table of Contents"
 msgstr ""
 
-#: public/class-betterdocs-public.php:350
+#: public/class-betterdocs-public.php:386
 msgid "Copy URL"
 msgstr ""
 
-#: public/betterdocs-tag-template.php:66 public/betterdocs-shortcodes.php:404
-#: public/betterdocs-shortcodes.php:615
+#: public/betterdocs-tag-template.php:66 public/betterdocs-shortcodes.php:602
 msgid "Sorry, no docs were found."
 msgstr ""
 
-#: public/betterdocs-shortcodes.php:499
+#: public/betterdocs-shortcodes.php:234
+msgid "Uncategorised"
+msgstr ""
+
+#: public/betterdocs-shortcodes.php:486
 msgid "articles"
 msgstr ""
 
-#: public/betterdocs-shortcodes.php:538
-msgid "Search.."
-msgstr ""
-
-#: public/betterdocs-shortcodes.php:637
+#: public/betterdocs-shortcodes.php:624
 msgid "Name:"
 msgstr ""
 
-#: public/betterdocs-shortcodes.php:642
+#: public/betterdocs-shortcodes.php:629
 msgid "Email:"
 msgstr ""
 
-#: public/betterdocs-shortcodes.php:647
+#: public/betterdocs-shortcodes.php:634
 msgid "Message:"
 msgstr ""
 
-#: public/betterdocs-shortcodes.php:652
+#: public/betterdocs-shortcodes.php:639
 msgid "Send"
 msgstr ""
 
-#: public/betterdocs-shortcodes.php:673
+#: public/betterdocs-shortcodes.php:660
 msgid "Please enter your name."
 msgstr ""
 
-#: public/betterdocs-shortcodes.php:674
+#: public/betterdocs-shortcodes.php:661
 msgid "Enter a valid email address."
 msgstr ""
 
-#: public/betterdocs-shortcodes.php:675
+#: public/betterdocs-shortcodes.php:662
 msgid "Please write your message."
 msgstr ""
 
-#: public/betterdocs-shortcodes.php:676
+#: public/betterdocs-shortcodes.php:663
 msgid "Message was not sent. Try Again."
 msgstr ""
 
-#: public/betterdocs-shortcodes.php:677
+#: public/betterdocs-shortcodes.php:664
 msgid "Thanks! Your message has been sent."
 msgstr ""
 
-#: public/betterdocs-shortcodes.php:684
+#: public/betterdocs-shortcodes.php:671
 #, php-format
 msgid "Feedback message from %s"
 msgstr ""
@@ -316,7 +315,7 @@ msgstr ""
 msgid "Go Pro"
 msgstr ""
 
-#: admin/customizer/defaults.php:165
+#: admin/customizer/defaults.php:164
 msgid "Share This Article :"
 msgstr ""
 
@@ -333,224 +332,240 @@ msgid "General Settings"
 msgstr ""
 
 #: admin/includes/betterdocs-settings-page-helper.php:48
+msgid "Enable Multiple Knowledge Base"
+msgstr ""
+
+#: admin/includes/betterdocs-settings-page-helper.php:62
 #: admin/setup-wizard/betterdocs-setup-wizard-config.php:53
 msgid "Enable Built-in Documentation Page"
 msgstr ""
 
-#: admin/includes/betterdocs-settings-page-helper.php:51
+#: admin/includes/betterdocs-settings-page-helper.php:65
 msgid ""
 "<strong>Note:</strong> if you disable built-in documentation page, you can "
 "use shortcode or page builder widgets to design your documentation page."
 msgstr ""
 
-#: admin/includes/betterdocs-settings-page-helper.php:63
+#: admin/includes/betterdocs-settings-page-helper.php:77
 msgid "Documentation Page Title"
 msgstr ""
 
-#: admin/includes/betterdocs-settings-page-helper.php:69
-msgid "Documentation Page Slug"
+#: admin/includes/betterdocs-settings-page-helper.php:83
+msgid "BetterDocs Root Slug"
 msgstr ""
 
-#: admin/includes/betterdocs-settings-page-helper.php:78
+#: admin/includes/betterdocs-settings-page-helper.php:92
 msgid ""
 "Note: You will need to insert BetterDocs Shortcode inside the page. This "
 "page will be used as docs permalink."
 msgstr ""
 
-#: admin/includes/betterdocs-settings-page-helper.php:82
+#: admin/includes/betterdocs-settings-page-helper.php:96
 msgid "Custom Category Slug"
 msgstr ""
 
-#: admin/includes/betterdocs-settings-page-helper.php:88
+#: admin/includes/betterdocs-settings-page-helper.php:102
 msgid "Custom Tag Slug"
 msgstr ""
 
-#: admin/includes/betterdocs-settings-page-helper.php:98
+#: admin/includes/betterdocs-settings-page-helper.php:112
 msgid "Layout"
 msgstr ""
 
-#: admin/includes/betterdocs-settings-page-helper.php:107
-#: admin/includes/betterdocs-settings-page-helper.php:112
-#: admin/includes/betterdocs-settings-page-helper.php:374
+#: admin/includes/betterdocs-settings-page-helper.php:121
+#: admin/includes/betterdocs-settings-page-helper.php:126
+#: admin/includes/betterdocs-settings-page-helper.php:401
 msgid "Documentation Page"
 msgstr ""
 
-#: admin/includes/betterdocs-settings-page-helper.php:117
+#: admin/includes/betterdocs-settings-page-helper.php:131
 msgid "Enable Live Search"
 msgstr ""
 
-#: admin/includes/betterdocs-settings-page-helper.php:123
+#: admin/includes/betterdocs-settings-page-helper.php:137
+msgid "Search Placeholder"
+msgstr ""
+
+#: admin/includes/betterdocs-settings-page-helper.php:143
 msgid "Search Result Image"
 msgstr ""
 
-#: admin/includes/betterdocs-settings-page-helper.php:129
+#: admin/includes/betterdocs-settings-page-helper.php:149
 msgid "Enable Masonry"
 msgstr ""
 
-#: admin/includes/betterdocs-settings-page-helper.php:135
+#: admin/includes/betterdocs-settings-page-helper.php:155
 msgid "Order Docs Post Alphabetically"
 msgstr ""
 
-#: admin/includes/betterdocs-settings-page-helper.php:141
+#: admin/includes/betterdocs-settings-page-helper.php:161
 msgid "Order Category Alphabetically"
 msgstr ""
 
-#: admin/includes/betterdocs-settings-page-helper.php:147
+#: admin/includes/betterdocs-settings-page-helper.php:167
 msgid "Nested Subcategory"
 msgstr ""
 
-#: admin/includes/betterdocs-settings-page-helper.php:153
+#: admin/includes/betterdocs-settings-page-helper.php:173
 msgid "Number of Columns"
 msgstr ""
 
-#: admin/includes/betterdocs-settings-page-helper.php:159
+#: admin/includes/betterdocs-settings-page-helper.php:179
 msgid "Number of Posts"
 msgstr ""
 
-#: admin/includes/betterdocs-settings-page-helper.php:165
+#: admin/includes/betterdocs-settings-page-helper.php:185
 msgid "Enable Post Count"
 msgstr ""
 
-#: admin/includes/betterdocs-settings-page-helper.php:171
+#: admin/includes/betterdocs-settings-page-helper.php:191
 msgid "Enable Explore More Button"
 msgstr ""
 
-#: admin/includes/betterdocs-settings-page-helper.php:187
+#: admin/includes/betterdocs-settings-page-helper.php:207
 msgid "Button Text"
 msgstr ""
 
-#: admin/includes/betterdocs-settings-page-helper.php:188
+#: admin/includes/betterdocs-settings-page-helper.php:208
 msgid "Explore More"
 msgstr ""
 
-#: admin/includes/betterdocs-settings-page-helper.php:194
-#: admin/includes/betterdocs-settings-page-helper.php:199
+#: admin/includes/betterdocs-settings-page-helper.php:214
+#: admin/includes/betterdocs-settings-page-helper.php:219
 msgid "Single Doc"
 msgstr ""
 
-#: admin/includes/betterdocs-settings-page-helper.php:204
+#: admin/includes/betterdocs-settings-page-helper.php:224
 msgid "Enable Table of Contents (TOC)"
 msgstr ""
 
-#: admin/includes/betterdocs-settings-page-helper.php:220
+#: admin/includes/betterdocs-settings-page-helper.php:240
 msgid "TOC Hierarchy"
 msgstr ""
 
-#: admin/includes/betterdocs-settings-page-helper.php:226
+#: admin/includes/betterdocs-settings-page-helper.php:246
 msgid "Enable Sticky TOC"
 msgstr ""
 
-#: admin/includes/betterdocs-settings-page-helper.php:232
+#: admin/includes/betterdocs-settings-page-helper.php:252
+msgid "Content Offset"
+msgstr ""
+
+#: admin/includes/betterdocs-settings-page-helper.php:255
+msgid "content offset from top on scroll."
+msgstr ""
+
+#: admin/includes/betterdocs-settings-page-helper.php:259
 msgid "Collapsible TOC on small devices"
 msgstr ""
 
-#: admin/includes/betterdocs-settings-page-helper.php:237
+#: admin/includes/betterdocs-settings-page-helper.php:264
 msgid "TOC Supported Heading Tag"
 msgstr ""
 
-#: admin/includes/betterdocs-settings-page-helper.php:252
+#: admin/includes/betterdocs-settings-page-helper.php:279
 msgid "Enable Post Title"
 msgstr ""
 
-#: admin/includes/betterdocs-settings-page-helper.php:258
+#: admin/includes/betterdocs-settings-page-helper.php:285
 msgid "Title Link Copy To Clipboard"
 msgstr ""
 
-#: admin/includes/betterdocs-settings-page-helper.php:264
+#: admin/includes/betterdocs-settings-page-helper.php:291
 msgid "Enable Breadcrumb"
 msgstr ""
 
-#: admin/includes/betterdocs-settings-page-helper.php:270
+#: admin/includes/betterdocs-settings-page-helper.php:297
 msgid "Enable Category on Breadcrumb"
 msgstr ""
 
-#: admin/includes/betterdocs-settings-page-helper.php:276
+#: admin/includes/betterdocs-settings-page-helper.php:303
 msgid "Enable Title on Breadcrumb"
 msgstr ""
 
-#: admin/includes/betterdocs-settings-page-helper.php:282
-#: admin/includes/betterdocs-settings-page-helper.php:358
+#: admin/includes/betterdocs-settings-page-helper.php:309
+#: admin/includes/betterdocs-settings-page-helper.php:385
 msgid "Enable Sidebar Category List"
 msgstr ""
 
-#: admin/includes/betterdocs-settings-page-helper.php:288
+#: admin/includes/betterdocs-settings-page-helper.php:315
 msgid "Enable Print Icon"
 msgstr ""
 
-#: admin/includes/betterdocs-settings-page-helper.php:294
+#: admin/includes/betterdocs-settings-page-helper.php:321
 msgid "Enable Tags"
 msgstr ""
 
-#: admin/includes/betterdocs-settings-page-helper.php:300
+#: admin/includes/betterdocs-settings-page-helper.php:327
 msgid "Enable Email Feedback"
 msgstr ""
 
-#: admin/includes/betterdocs-settings-page-helper.php:316
+#: admin/includes/betterdocs-settings-page-helper.php:343
 msgid "Email Address"
 msgstr ""
 
-#: admin/includes/betterdocs-settings-page-helper.php:319
+#: admin/includes/betterdocs-settings-page-helper.php:346
 msgid "The email address where the feedback form should sent"
 msgstr ""
 
-#: admin/includes/betterdocs-settings-page-helper.php:323
+#: admin/includes/betterdocs-settings-page-helper.php:350
 msgid "Show Last Update Time"
 msgstr ""
 
-#: admin/includes/betterdocs-settings-page-helper.php:329
+#: admin/includes/betterdocs-settings-page-helper.php:356
 msgid "Enable Navigation"
 msgstr ""
 
-#: admin/includes/betterdocs-settings-page-helper.php:335
+#: admin/includes/betterdocs-settings-page-helper.php:362
 msgid "Enable Comment"
 msgstr ""
 
-#: admin/includes/betterdocs-settings-page-helper.php:341
+#: admin/includes/betterdocs-settings-page-helper.php:368
 msgid "Enable Credit"
 msgstr ""
 
-#: admin/includes/betterdocs-settings-page-helper.php:348
-#: admin/includes/betterdocs-settings-page-helper.php:353
+#: admin/includes/betterdocs-settings-page-helper.php:375
+#: admin/includes/betterdocs-settings-page-helper.php:380
 msgid "Archive Page"
 msgstr ""
 
-#: admin/includes/betterdocs-settings-page-helper.php:370
+#: admin/includes/betterdocs-settings-page-helper.php:397
 msgid "Design"
 msgstr ""
 
-#: admin/includes/betterdocs-settings-page-helper.php:379
+#: admin/includes/betterdocs-settings-page-helper.php:406
 msgid "Customize BetterDocs"
 msgstr ""
 
-#: admin/includes/betterdocs-settings-page-helper.php:388
-#: admin/includes/betterdocs-settings-page-helper.php:392
+#: admin/includes/betterdocs-settings-page-helper.php:415
+#: admin/includes/betterdocs-settings-page-helper.php:419
 msgid "Shortcodes"
 msgstr ""
 
-#: admin/includes/betterdocs-settings-page-helper.php:397
+#: admin/includes/betterdocs-settings-page-helper.php:424
 msgid "Category Grid"
 msgstr ""
 
-#: admin/includes/betterdocs-settings-page-helper.php:401
+#: admin/includes/betterdocs-settings-page-helper.php:428
 msgid ""
 "<strong>You can use:</strong> [betterdocs_category_grid "
 "post_counter=\"true\" icon=\"true\" masonry=\"true\" column=\"3\" "
 "posts_per_grid=\"5\" nested_subcategory=\"true\" terms=\"term_ID, term_ID\"]"
 msgstr ""
 
-#: admin/includes/betterdocs-settings-page-helper.php:405
+#: admin/includes/betterdocs-settings-page-helper.php:432
 msgid "Category Box"
 msgstr ""
 
-#: admin/includes/betterdocs-settings-page-helper.php:409
+#: admin/includes/betterdocs-settings-page-helper.php:436
 msgid "<strong>You can use:</strong> [betterdocs_category_box column=\"3\"]"
 msgstr ""
 
-#: admin/includes/betterdocs-settings-page-helper.php:413
+#: admin/includes/betterdocs-settings-page-helper.php:440
 msgid "Search Form"
 msgstr ""
 
-#: admin/includes/betterdocs-settings-page-helper.php:420
+#: admin/includes/betterdocs-settings-page-helper.php:447
 msgid "Feedback Form"
 msgstr ""
 
@@ -717,20 +732,20 @@ msgstr ""
 msgid "Skip This Step"
 msgstr ""
 
-#: public/partials/template-single/layout-1.php:111
+#: public/partials/template-single/layout-1.php:123
 msgid "Still stuck? How can we help?"
 msgstr ""
 
-#: public/partials/template-single/layout-1.php:116
+#: public/partials/template-single/layout-1.php:128
 msgid "How can we help?"
 msgstr ""
 
-#: public/partials/template-single/layout-1.php:131
+#: public/partials/template-single/layout-1.php:143
 #, php-format
 msgid "Updated on %s"
 msgstr ""
 
-#: public/partials/template-single/layout-1.php:155
+#: public/partials/template-single/layout-1.php:167
 msgid "Powered by "
 msgstr ""
 

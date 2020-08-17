@@ -279,27 +279,8 @@ add_action('wp', function () {
     }
 });
 
-add_filter('fluentform_validate_input_item_input_email', function ($validation, $field, $formData, $fields, $form) {
-    if (\FluentForm\Framework\Helpers\ArrayHelper::get($field, 'raw.settings.is_unique') == 'yes') {
-        $fieldName = \FluentForm\Framework\Helpers\ArrayHelper::get($field, 'name');
-
-        if ($inputValue = \FluentForm\Framework\Helpers\ArrayHelper::get($formData, $fieldName)) {
-            $exist = wpFluent()->table('fluentform_entry_details')
-                ->where('form_id', $form->id)
-                ->where('field_name', $fieldName)
-                ->where('field_value', $inputValue)
-                ->first();
-            if ($exist) {
-                return [
-                    'unique' => \FluentForm\Framework\Helpers\ArrayHelper::get($field, 'raw.settings.unique_validation_message')
-                ];
-            }
-        }
-    }
-
-    return $validation;
-}, 10, 5);
-
+add_filter('fluentform_validate_input_item_input_email', ['\FluentForm\App\Helpers\Helper', 'isUniqueValidation'], 10, 5);
+add_filter('fluentform_validate_input_item_input_text', ['\FluentForm\App\Helpers\Helper', 'isUniqueValidation'], 10, 5);
 
 add_filter('cron_schedules', function ($schedules) {
     $schedules['ff_every_five_minutes'] = array(
@@ -319,6 +300,15 @@ add_action('ff_integration_action_result', function ($feed, $status, $note = '')
     if (!$note) {
         $note = $status;
     }
+
+    if(strlen($note) > 255) {
+        if(function_exists('mb_substr')) {
+            $note = mb_substr($note, 0, 251).'...';
+        } else {
+            $note = substr($note, 0, 251).'...';
+        }
+    }
+
     $actionId = intval($feed['scheduled_action_id']);
     wpFluent()->table('ff_scheduled_actions')
         ->where('id', $actionId)
@@ -342,3 +332,5 @@ add_action('fluentform_global_notify_completed', function ($insertId, $form) use
 if(defined('ELEMENTOR_VERSION')) {
     new \FluentForm\App\Modules\Widgets\ElementorWidget($app);
 }
+
+(new FluentForm\App\Services\Integrations\Slack\SlackNotificationActions($app))->register();

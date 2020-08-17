@@ -3,7 +3,7 @@
 Contributors: horearadu
 Tags: mesmerize companion, drag, drop, builder
 Requires at least: 4.0
-Tested up to: 5.3
+Tested up to: 5.5
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
