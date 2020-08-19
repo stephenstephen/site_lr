@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
-    <meta charset="<?php bloginfo( 'charset' ); ?>">
+    <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="profile" href="http://gmpg.org/xfn/11">
 
@@ -10,8 +10,8 @@
 
 <body <?php body_class(); ?>>
 <?php
-if ( function_exists( 'wp_body_open' ) ) {
-	wp_body_open();
+if (function_exists('wp_body_open')) {
+    wp_body_open();
 }
 ?>
 <?php mesmerize_print_skip_link(); ?>
