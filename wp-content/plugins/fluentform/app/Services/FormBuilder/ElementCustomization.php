@@ -142,7 +142,7 @@ $element_customization_settings = array(
     ),
     'pricing_options' => array(
         'template' => 'pricingOptions',
-        'label' => __('Payment Settings', 'fluentform'),
+        'label' => __('Payment Items', 'fluentform'),
         'help_text' => __('Set your product type and corresponding prices', 'fluentform'),
     ),
     'validation_rules' => array(
@@ -342,7 +342,8 @@ $element_customization_settings = array(
     ),
     'dynamic_default_value' => array(
         'template' => 'inputValue',
-        'label' => __('Default Value', 'fluentform'),
+        'type' => 'text',
+        'label' => __('Dynamic Default Value', 'fluentform'),
         'help_text' => __('If you would like to pre-populate the value of a field, enter it here.', 'fluentform'),
     ),
     'container_class' => array(
@@ -358,6 +359,7 @@ $element_customization_settings = array(
     'country_list' => array(
         'template' => 'customCountryList',
         'label' => __('Country List', 'fluentform'),
+        'key' => 'country_list'
     ),
     'product_field_types' => array(
         'template' => 'productFieldTypes',

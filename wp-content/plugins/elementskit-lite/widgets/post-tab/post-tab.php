@@ -348,6 +348,39 @@ class Elementskit_Widget_Post_Tab extends Widget_Base {
 
 		$this->end_controls_section();
 
+		$this->start_controls_section(
+			'ekit_post_tab_content_style',
+			[
+				'label' => esc_html__( 'Content', 'elementskit' ),
+				'tab' => Controls_Manager::TAB_STYLE,
+			]
+		);
+		
+		$this->add_control(
+			'ekit_post_tab_content_image_height',
+			[
+				'label' => esc_html__( 'Image Height', 'elementskit' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%' ],
+				'range' => [
+					'px' => [
+						'min' => 30,
+						'max' => 200,
+						'step' => 1,
+					],
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .ekit-wid-con .ekit-post-tab-thumb' => 'height: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->end_controls_section();
+
 		$this->insert_pro_message();
     }
 
@@ -411,7 +444,7 @@ class Elementskit_Widget_Post_Tab extends Widget_Base {
                                     <div <?php echo $this->get_render_attribute_string('ekit-single-item'); ?>>
                                         <div class="tab__post__single--inner">
                                             <a href="<?php echo get_the_permalink(); ?>" class="tab__post--header">
-                                                <?php the_post_thumbnail(); ?>
+                                                <div class="ekit-post-tab-thumb" style="background-image: url('<?php echo esc_url(get_the_post_thumbnail_url()); ?>');"></div>
                                             </a>
                                             <h3 class="tab__post--title"><a href="<?php echo get_the_permalink(); ?>"><?php the_title(); ?></a></h3>
                                         </div>

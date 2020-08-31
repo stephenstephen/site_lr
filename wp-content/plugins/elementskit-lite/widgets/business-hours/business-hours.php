@@ -120,7 +120,7 @@ class Elementskit_Widget_Business_Hours extends Widget_Base {
 			'ekit_business_openday_list',
 			[
 				'type'    => Controls_Manager::REPEATER,
-				'fields'  => array_values( $repeater->get_controls() ),
+				'fields'  => $repeater->get_controls(),
 				'default' => [
 					[
 						'ekit_business_day' => esc_html__( 'Sunday', 'elementskit' ),

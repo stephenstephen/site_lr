@@ -3,7 +3,7 @@ Contributors: nickboss
 Donate link: http://www.iptanus.com/support/wordpress-file-upload
 Tags: file, upload, ajax, form, page, post, sidebar, responsive, widget, webcam, ftp
 Requires at least: 2.9.2
-Tested up to: 5.4.1
+Tested up to: 5.5
 Stable tag: "trunk"
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -148,6 +148,9 @@ There is an option in plugin's settings in Dashboard to relax the CSS rules, so 
 8. A screenshot of the file browser.
 
 == Changelog ==
+
+= 4.14.4 =
+* restored .po files in languages so that users can change translations
 
 = 4.14.3 =
 * slight change in wfu_get_filtered_recs to handle cases where b.date_from is null

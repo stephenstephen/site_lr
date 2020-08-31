@@ -21,6 +21,27 @@ class Support_Reviews {
     }
 
     /**
+     * Admin Notice Ajax  loader
+     * @return void
+     */
+    public function notice_dissmiss() {
+        if (isset($_POST['_wpnonce']) || wp_verify_nonce(sanitize_key(wp_unslash($_POST['_wpnonce'])), 'oxilab_flip_notice_dissmiss')):
+            $notice = isset($_POST['notice']) ? sanitize_text_field($_POST['notice']) : '';
+            if ($notice == 'maybe'):
+                $data = strtotime("now");
+                update_option('oxilab_flip_box_activation_date', $data);
+            else:
+                update_option('oxilab_flip_box_nobug', $notice);
+            endif;
+            echo 'Its Complete';
+        else:
+            return;
+        endif;
+
+        die();
+    }
+
+    /**
      * First Installation Track
      * @return void
      */
@@ -82,27 +103,6 @@ class Support_Reviews {
     public function dismiss_button_scripts() {
         wp_enqueue_script('oxilab_flip-admin-notice', OXI_FLIP_BOX_URL . '/asset/backend/js/admin-notice.js', false, OXI_FLIP_BOX_PLUGIN_VERSION);
         wp_localize_script('oxilab_flip-admin-notice', 'oxilab_flip_notice_dissmiss', array('ajaxurl' => admin_url('admin-ajax.php'), 'nonce' => wp_create_nonce('oxilab_flip_notice_dissmiss')));
-    }
-
-    /**
-     * Admin Notice Ajax  loader
-     * @return void
-     */
-    public function notice_dissmiss() {
-        if (isset($_POST['_wpnonce']) || wp_verify_nonce(sanitize_key(wp_unslash($_POST['_wpnonce'])), 'oxilab_flip_notice_dissmiss')):
-            $notice = isset($_POST['notice']) ? sanitize_text_field($_POST['notice']) : '';
-            if ($notice == 'maybe'):
-                $data = strtotime("now");
-                update_option('oxilab_flip_box_activation_date', $data);
-            else:
-                update_option('oxilab_flip_box_nobug', $notice);
-            endif;
-            echo 'Its Complete';
-        else:
-            return;
-        endif;
-
-        die();
     }
 
 }

@@ -3,8 +3,8 @@ Contributors: wpdevteam, re_enter_rupok, asif2bd, emsohel, priyomukul
 Donate link: https://wpdeveloper.net
 Tags:  knowledge base, docs, documentation, documents, wiki, faq page, doc, knowledge, table of content, TOC, knowledgebase, faqs, doc page, best documentation plugin, support ticket, customer support, instant answer bot, bot, help articles
 Requires at least: 4.0
-Tested up to: 5.4
-Stable tag: 1.3.4
+Tested up to: 5.5
+Stable tag: 1.3.5
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -121,6 +121,11 @@ Yes, it will work with any standard WordPress theme.
 
 
 == Changelog ==
+
+= 1.3.5 - 20/08/2020 =
+- Improved: jQuery Select2 only loaded in BetterDocs Settings page
+- Fixed: PHP Error Notices
+- Few minor bugfix and improvements
 
 = 1.3.4 - 09/08/2020 =
 - Improvement: Logged in users data automatically filled in for Single Doc Feedback form

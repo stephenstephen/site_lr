@@ -8,18 +8,6 @@ namespace OXI_FLIP_BOX_PLUGINS\Inc_Helper;
  */
 trait Public_Helper {
 
-    /**
-     * Plugin Name Convert to View
-     *
-     * @since 2.0.0
-     */
-    public function name_converter($data) {
-        $data = str_replace('_', ' ', $data);
-        $data = str_replace('-', ' ', $data);
-        $data = str_replace('+', ' ', $data);
-        return ucwords($data);
-    }
-
     public function shortcode_render($styleid, $user) {
         if (!empty((int) $styleid) && !empty($user)):
             $style = $this->wpdb->get_row($this->wpdb->prepare('SELECT * FROM ' . $this->parent_table . ' WHERE id = %d ', $styleid), ARRAY_A);
@@ -30,6 +18,18 @@ trait Public_Helper {
                 new $C($style, $child, $user);
             endif;
         endif;
+    }
+
+    /**
+     * Plugin Name Convert to View
+     *
+     * @since 2.0.0
+     */
+    public function name_converter($data) {
+        $data = str_replace('_', ' ', $data);
+        $data = str_replace('-', ' ', $data);
+        $data = str_replace('+', ' ', $data);
+        return ucwords($data);
     }
 
     public function icon_font_selector($data) {

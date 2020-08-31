@@ -11,6 +11,19 @@ use OXI_FLIP_BOX_PLUGINS\Page\Admin_Render;
 
 class Style10 extends Admin_Render {
 
+    public function register_child() {
+
+        $data = ' flip-box-front-title {#}|{#}' . $this->admin_special_charecter($_POST['flip-box-front-title']) . '{#}|{#}'
+                . ' flip-box-front-icons {#}|{#}' . sanitize_text_field($_POST['flip-box-front-icons']) . '{#}|{#}'
+                . ' flip-box-image-upload-url-01 {#}|{#}' . sanitize_text_field($_POST['flip-box-image-upload-url-01']) . '{#}|{#}'
+                . ' flip-box-backend-desc {#}|{#}' . $this->admin_special_charecter($_POST['flip-box-backend-desc']) . '{#}|{#}'
+                . ' flip-box-backend-icons{#}|{#}' . sanitize_text_field($_POST['flip-box-backend-icons']) . '{#}|{#}'
+                . ' flip-box-backend-link {#}|{#}' . sanitize_text_field($_POST['flip-box-backend-link']) . '{#}|{#}'
+                . ' flip-box-image-upload-url-02 {#}|{#}' . sanitize_text_field($_POST['flip-box-image-upload-url-02']) . '{#}|{#}';
+
+        return $data;
+    }
+
     public function register_style() {
         $data = 'oxilab-flip-type |' . sanitize_text_field($_POST['oxilab-flip-type']) . '|'
                 . ' oxilab-flip-effects |' . sanitize_text_field($_POST['oxilab-flip-effects']) . '|'
@@ -85,19 +98,6 @@ class Style10 extends Admin_Render {
         return $data;
     }
 
-    public function register_child() {
-
-        $data = ' flip-box-front-title {#}|{#}' . $this->admin_special_charecter($_POST['flip-box-front-title']) . '{#}|{#}'
-                . ' flip-box-front-icons {#}|{#}' . sanitize_text_field($_POST['flip-box-front-icons']) . '{#}|{#}'
-                . ' flip-box-image-upload-url-01 {#}|{#}' . sanitize_text_field($_POST['flip-box-image-upload-url-01']) . '{#}|{#}'
-                . ' flip-box-backend-desc {#}|{#}' . $this->admin_special_charecter($_POST['flip-box-backend-desc']) . '{#}|{#}'
-                . ' flip-box-backend-icons{#}|{#}' . sanitize_text_field($_POST['flip-box-backend-icons']) . '{#}|{#}'
-                . ' flip-box-backend-link {#}|{#}' . sanitize_text_field($_POST['flip-box-backend-link']) . '{#}|{#}'
-                . ' flip-box-image-upload-url-02 {#}|{#}' . sanitize_text_field($_POST['flip-box-image-upload-url-02']) . '{#}|{#}';
-
-        return $data;
-    }
-
     public function register_controls() {
         ?>
         <div class="oxi-addons-tabs-content-tabs" id="oxilab-tabs-id-5">
@@ -107,11 +107,11 @@ class Style10 extends Admin_Render {
                         General Settings
                     </div> 
                     <?php
-                    echo  $this->oxilab_flip_box_flip_type_effects_type($this->style[1], $this->style[3]);
-                    echo  $this->oxilab_flip_box_admin_col_data('flip-col', $this->style[43], 'Item per Rows', 'How many item shows in single Rows');
-                    echo  $this->oxilab_flip_box_admin_number('flip-width', $this->style[45], '1', 'Width', 'Give your Filp Width');
-                    echo  $this->oxilab_flip_box_admin_number('flip-height', $this->style[47], '1', 'Height', 'Give your Flip Height');
-                    echo  $this->oxilab_flip_box_admin_number('flip-border-radius', $this->style[69], '1', 'Border Radius', 'Set your flip Border Radius');
+                    echo $this->oxilab_flip_box_flip_type_effects_type($this->style[1], $this->style[3]);
+                    echo $this->oxilab_flip_box_admin_col_data('flip-col', $this->style[43], 'Item per Rows', 'How many item shows in single Rows');
+                    echo $this->oxilab_flip_box_admin_number('flip-width', $this->style[45], '1', 'Width', 'Give your Filp Width');
+                    echo $this->oxilab_flip_box_admin_number('flip-height', $this->style[47], '1', 'Height', 'Give your Flip Height');
+                    echo $this->oxilab_flip_box_admin_number('flip-border-radius', $this->style[69], '1', 'Border Radius', 'Set your flip Border Radius');
                     ?>    
                 </div> 
                 <div class="oxi-addons-content-div">
@@ -119,8 +119,8 @@ class Style10 extends Admin_Render {
                         Optional Settings
                     </div>  
                     <?php
-                    echo  $this->oxilab_flip_box_admin_number_double('margin-top', $this->style[49], 'margin-left', $this->style[51], 'Margin', 'Set your Margin top bottom and left right');
-                    echo  $this->oxilab_flip_box_admin_true_false('flip-open-tabs', $this->style[53], 'New tabs', '_blank', 'Normal', '', 'Link Open', 'Dow you want to open link at same Tabs or new Windows');
+                    echo $this->oxilab_flip_box_admin_number_double('margin-top', $this->style[49], 'margin-left', $this->style[51], 'Margin', 'Set your Margin top bottom and left right');
+                    echo $this->oxilab_flip_box_admin_true_false('flip-open-tabs', $this->style[53], 'New tabs', '_blank', 'Normal', '', 'Link Open', 'Dow you want to open link at same Tabs or new Windows');
                     ?> 
                 </div>
             </div>
@@ -130,8 +130,8 @@ class Style10 extends Admin_Render {
                         Animation
                     </div>
                     <?php
-                    echo  $this->oxilab_flip_box_admin_animation_select($this->style[55]);
-                    echo  $this->oxilab_flip_box_admin_number('animation-duration', $this->style[57], '0.1', 'Animation Duration', 'Give your Animation Duration into Second');
+                    echo $this->oxilab_flip_box_admin_animation_select($this->style[55]);
+                    echo $this->oxilab_flip_box_admin_number('animation-duration', $this->style[57], '0.1', 'Animation Duration', 'Give your Animation Duration into Second');
                     ?> 
                 </div> 
                 <div class="oxi-addons-content-div">
@@ -139,9 +139,9 @@ class Style10 extends Admin_Render {
                         Box Shadow
                     </div>
                     <?php
-                    echo  $this->oxilab_flip_box_admin_color('flip-boxshow-color', $this->style[59], 'rgba', 'Color', 'Give your Box Shadow Color', '', '');
-                    echo  $this->oxilab_flip_box_admin_number_double('flip-boxshow-horizontal', $this->style[61], 'flip-boxshow-vertical', $this->style[63], 'Shadow Length', 'Giveyour Box Shadow lenth as horizontal and vertical');
-                    echo  $this->oxilab_flip_box_admin_number_double('flip-boxshow-blur', $this->style[65], 'flip-boxshow-spread', $this->style[67], 'Shadow Radius', 'Giveyour Box Shadow Radius as Blur and Spread');
+                    echo $this->oxilab_flip_box_admin_color('flip-boxshow-color', $this->style[59], 'rgba', 'Color', 'Give your Box Shadow Color', '', '');
+                    echo $this->oxilab_flip_box_admin_number_double('flip-boxshow-horizontal', $this->style[61], 'flip-boxshow-vertical', $this->style[63], 'Shadow Length', 'Giveyour Box Shadow lenth as horizontal and vertical');
+                    echo $this->oxilab_flip_box_admin_number_double('flip-boxshow-blur', $this->style[65], 'flip-boxshow-spread', $this->style[67], 'Shadow Radius', 'Giveyour Box Shadow Radius as Blur and Spread');
                     ?> 
                 </div> 
             </div>
@@ -153,8 +153,8 @@ class Style10 extends Admin_Render {
                         General Settings
                     </div> 
                     <?php
-                    echo  $this->oxilab_flip_box_admin_color('front-background-color', $this->style[5], 'rgba', 'Background Color', 'Set your Front Background Color', ' background-color', '.oxilab-flip-box-' . $this->oxiid . '');
-                    echo  $this->oxilab_flip_box_admin_number_double('front-padding-top', $this->style[71], 'front-padding-left', $this->style[73], 'Padding', 'Set your Front Padding as Top Bottom and Left Right');
+                    echo $this->oxilab_flip_box_admin_color('front-background-color', $this->style[5], 'rgba', 'Background Color', 'Set your Front Background Color', ' background-color', '.oxilab-flip-box-' . $this->oxiid . '');
+                    echo $this->oxilab_flip_box_admin_number_double('front-padding-top', $this->style[71], 'front-padding-left', $this->style[73], 'Padding', 'Set your Front Padding as Top Bottom and Left Right');
                     ?>    
                 </div> 
                 <div class="oxi-addons-content-div">
@@ -162,12 +162,12 @@ class Style10 extends Admin_Render {
                         Icon Settings
                     </div>  
                     <?php
-                    echo  $this->oxilab_flip_box_admin_number('front-icon-size', $this->style[77], '1', 'Icon Size', 'Set your Icon Font Size');
-                    echo  $this->oxilab_flip_box_admin_color('front-icon-color', $this->style[7], '', 'Icon Color', 'Set your Icon Color', 'color', '.oxilab-flip-box-' . $this->oxiid . '-data .oxilab-icon-data [class^=\'fa\']');
-                    echo  $this->oxilab_flip_box_admin_color('front-icon-background-color', $this->style[9], '', 'Icon Background Color', 'Set your Icon Background Color', 'background-color', '.oxilab-flip-box-' . $this->oxiid . '-data .oxilab-icon-data');
-                    echo  $this->oxilab_flip_box_admin_number('front-icon-width', $this->style[79], '1', 'Icon width', 'Set your Icon Width and Height Size.');
-                    echo  $this->oxilab_flip_box_admin_number('front-icon-border-radius', $this->style[81], '1', 'Border Radius', 'Set Your Icon Border Radius');
-                    echo  $this->oxilab_flip_box_admin_number_double('front-icon-padding-top-bottom', $this->style[133], 'front-icon-padding-left-right', $this->style[135], 'Icon Padding', 'Set your Icon Padding as Top Bottom and Left Right');
+                    echo $this->oxilab_flip_box_admin_number('front-icon-size', $this->style[77], '1', 'Icon Size', 'Set your Icon Font Size');
+                    echo $this->oxilab_flip_box_admin_color('front-icon-color', $this->style[7], '', 'Icon Color', 'Set your Icon Color', 'color', '.oxilab-flip-box-' . $this->oxiid . '-data .oxilab-icon-data [class^=\'fa\']');
+                    echo $this->oxilab_flip_box_admin_color('front-icon-background-color', $this->style[9], '', 'Icon Background Color', 'Set your Icon Background Color', 'background-color', '.oxilab-flip-box-' . $this->oxiid . '-data .oxilab-icon-data');
+                    echo $this->oxilab_flip_box_admin_number('front-icon-width', $this->style[79], '1', 'Icon width', 'Set your Icon Width and Height Size.');
+                    echo $this->oxilab_flip_box_admin_number('front-icon-border-radius', $this->style[81], '1', 'Border Radius', 'Set Your Icon Border Radius');
+                    echo $this->oxilab_flip_box_admin_number_double('front-icon-padding-top-bottom', $this->style[133], 'front-icon-padding-left-right', $this->style[135], 'Icon Padding', 'Set your Icon Padding as Top Bottom and Left Right');
                     ?> 
                 </div>
             </div>
@@ -177,14 +177,14 @@ class Style10 extends Admin_Render {
                         Heading Settings
                     </div>
                     <?php
-                    echo  $this->oxilab_flip_box_admin_number('front-heading-size', $this->style[83], '1', 'Font Size', 'Set your front Heading Font Size');
-                    echo  $this->oxilab_flip_box_admin_color('front-heading-color', $this->style[11], '', 'Heading Color', 'Set your Front Heading Color', 'color', '.oxilab-flip-box-' . $this->oxiid . '-data .oxilab-heading');
-                    echo  $this->oxilab_flip_box_admin_font_family('front-heading-family', $this->style[85], 'Font Family', 'Give your Prepared Font from our Google Font List');
-                    echo  $this->oxilab_flip_box_admin_font_style('front-heding-style', $this->style[87], 'Font Style', 'Set your Heading Font Style');
-                    echo  $this->oxilab_flip_box_admin_font_weight('front-heding-weight', $this->style[89], 'Font Weight', 'Give your Front Heading Font Weight');
-                    echo  $this->oxilab_flip_box_admin_text_align('front-heding-text-align', $this->style[91], 'Text Align', 'Give your Heading Text Align');
-                    echo  $this->oxilab_flip_box_admin_number_double('front-heding-padding-top', $this->style[93], 'front-heding-padding-bottom', $this->style[95], 'Padding Top Bottom', 'Set Your Heading  Padding Top and Bottom');
-                    echo  $this->oxilab_flip_box_admin_number_double('front-heding-padding-left', $this->style[97], 'front-heding-padding-right', $this->style[99], 'Padding Left Right', 'Set Your Heading  Padding Left and Right');
+                    echo $this->oxilab_flip_box_admin_number('front-heading-size', $this->style[83], '1', 'Font Size', 'Set your front Heading Font Size');
+                    echo $this->oxilab_flip_box_admin_color('front-heading-color', $this->style[11], '', 'Heading Color', 'Set your Front Heading Color', 'color', '.oxilab-flip-box-' . $this->oxiid . '-data .oxilab-heading');
+                    echo $this->oxilab_flip_box_admin_font_family('front-heading-family', $this->style[85], 'Font Family', 'Give your Prepared Font from our Google Font List');
+                    echo $this->oxilab_flip_box_admin_font_style('front-heding-style', $this->style[87], 'Font Style', 'Set your Heading Font Style');
+                    echo $this->oxilab_flip_box_admin_font_weight('front-heding-weight', $this->style[89], 'Font Weight', 'Give your Front Heading Font Weight');
+                    echo $this->oxilab_flip_box_admin_text_align('front-heding-text-align', $this->style[91], 'Text Align', 'Give your Heading Text Align');
+                    echo $this->oxilab_flip_box_admin_number_double('front-heding-padding-top', $this->style[93], 'front-heding-padding-bottom', $this->style[95], 'Padding Top Bottom', 'Set Your Heading  Padding Top and Bottom');
+                    echo $this->oxilab_flip_box_admin_number_double('front-heding-padding-left', $this->style[97], 'front-heding-padding-right', $this->style[99], 'Padding Left Right', 'Set Your Heading  Padding Left and Right');
                     ?> 
                 </div> 
             </div>
@@ -196,8 +196,8 @@ class Style10 extends Admin_Render {
                         General Settings
                     </div> 
                     <?php
-                    echo  $this->oxilab_flip_box_admin_color('backend-background-color', $this->style[13], 'rgba', 'Background Color', 'Set your Backend Background Color', 'background-color', '.oxilab-flip-box-back-' . $this->oxiid . '');
-                    echo  $this->oxilab_flip_box_admin_number_double('backend-padding-top', $this->style[101], 'backend-padding-left', $this->style[103], 'Padding', 'Set your Backend Padding as Top Bottom and Left Right');
+                    echo $this->oxilab_flip_box_admin_color('backend-background-color', $this->style[13], 'rgba', 'Background Color', 'Set your Backend Background Color', 'background-color', '.oxilab-flip-box-back-' . $this->oxiid . '');
+                    echo $this->oxilab_flip_box_admin_number_double('backend-padding-top', $this->style[101], 'backend-padding-left', $this->style[103], 'Padding', 'Set your Backend Padding as Top Bottom and Left Right');
                     ?>    
                 </div> 
                 <div class="oxi-addons-content-div">
@@ -205,10 +205,10 @@ class Style10 extends Admin_Render {
                         Icon Settings
                     </div>  
                     <?php
-                    echo  $this->oxilab_flip_box_admin_number('backend-icon-size', $this->style[77], '1', 'Icon Size', 'Set your Icon Font Size');
-                    echo  $this->oxilab_flip_box_admin_color('backend-icon-color', $this->style[15], '', 'Icon Color', 'Set your Icon Color', 'color', '.oxilab-flip-box-back-' . $this->oxiid . '-data .oxilab-icon-data [class^=\'fa\']');
-                    echo  $this->oxilab_flip_box_admin_number('backend-icon-width', $this->style[79], '1', 'Icon width', 'Set your Icon Width and Height Size.');
-                    echo  $this->oxilab_flip_box_admin_number_double('backend-icon-padding-top-bottom', $this->style[129], 'backend-icon-padding-left-right', $this->style[131], 'Icon Padding', 'Set your Icon Padding as Top Bottom and Left Right');
+                    echo $this->oxilab_flip_box_admin_number('backend-icon-size', $this->style[77], '1', 'Icon Size', 'Set your Icon Font Size');
+                    echo $this->oxilab_flip_box_admin_color('backend-icon-color', $this->style[15], '', 'Icon Color', 'Set your Icon Color', 'color', '.oxilab-flip-box-back-' . $this->oxiid . '-data .oxilab-icon-data [class^=\'fa\']');
+                    echo $this->oxilab_flip_box_admin_number('backend-icon-width', $this->style[79], '1', 'Icon width', 'Set your Icon Width and Height Size.');
+                    echo $this->oxilab_flip_box_admin_number_double('backend-icon-padding-top-bottom', $this->style[129], 'backend-icon-padding-left-right', $this->style[131], 'Icon Padding', 'Set your Icon Padding as Top Bottom and Left Right');
                     ?> 
                 </div>
             </div>
@@ -218,14 +218,14 @@ class Style10 extends Admin_Render {
                         Backend Info
                     </div>  
                     <?php
-                    echo  $this->oxilab_flip_box_admin_number('backend-info-size', $this->style[107], '1', 'Font Size', 'Set your Backend Info Font Size');
-                    echo  $this->oxilab_flip_box_admin_color('backend-info-color', $this->style[17], '', 'Text Color', 'Set your Backend Info Color', 'color', '.oxilab-flip-box-back-' . $this->oxiid . '-data .oxilab-info');
-                    echo  $this->oxilab_flip_box_admin_font_family('backend-info-family', $this->style[109], 'Font Family', 'Give your Prepared Font from our Google Font List');
-                    echo  $this->oxilab_flip_box_admin_font_style('backend-info-style', $this->style[111], 'Font Style', 'Set your Backend Info Font Style');
-                    echo  $this->oxilab_flip_box_admin_font_weight('backend-info-weight', $this->style[113], 'Font Weight', 'Give your Backend Info Font Weight');
-                    echo  $this->oxilab_flip_box_admin_text_align('backend-info-text-align', $this->style[115], 'Text Align', 'Give your Backend Info Text Align');
-                    echo  $this->oxilab_flip_box_admin_number_double('backend-info-padding-top', $this->style[117], 'backend-info-padding-bottom', $this->style[119], 'Padding Top Bottom', 'Set Your Backend Info  Padding Top and Bottom');
-                    echo  $this->oxilab_flip_box_admin_number_double('backend-info-padding-left', $this->style[121], 'backend-info-padding-right', $this->style[123], 'Padding Left Right', 'Set Your Backend Info  Padding Left and Right');
+                    echo $this->oxilab_flip_box_admin_number('backend-info-size', $this->style[107], '1', 'Font Size', 'Set your Backend Info Font Size');
+                    echo $this->oxilab_flip_box_admin_color('backend-info-color', $this->style[17], '', 'Text Color', 'Set your Backend Info Color', 'color', '.oxilab-flip-box-back-' . $this->oxiid . '-data .oxilab-info');
+                    echo $this->oxilab_flip_box_admin_font_family('backend-info-family', $this->style[109], 'Font Family', 'Give your Prepared Font from our Google Font List');
+                    echo $this->oxilab_flip_box_admin_font_style('backend-info-style', $this->style[111], 'Font Style', 'Set your Backend Info Font Style');
+                    echo $this->oxilab_flip_box_admin_font_weight('backend-info-weight', $this->style[113], 'Font Weight', 'Give your Backend Info Font Weight');
+                    echo $this->oxilab_flip_box_admin_text_align('backend-info-text-align', $this->style[115], 'Text Align', 'Give your Backend Info Text Align');
+                    echo $this->oxilab_flip_box_admin_number_double('backend-info-padding-top', $this->style[117], 'backend-info-padding-bottom', $this->style[119], 'Padding Top Bottom', 'Set Your Backend Info  Padding Top and Bottom');
+                    echo $this->oxilab_flip_box_admin_number_double('backend-info-padding-left', $this->style[121], 'backend-info-padding-right', $this->style[123], 'Padding Left Right', 'Set Your Backend Info  Padding Left and Right');
                     ?> 
                 </div>                                                                       
             </div>
@@ -241,7 +241,7 @@ class Style10 extends Admin_Render {
         </div>
         <div class="oxi-addons-tabs-content-tabs" id="oxilab-tabs-id-1">
             <?php
-            echo  $this->oxilab_flip_box_admin_support();
+            echo $this->oxilab_flip_box_admin_support();
             ?>
         </div>
         <?php
@@ -257,7 +257,7 @@ class Style10 extends Admin_Render {
         </div>
         <div class="modal-body row">
             <?php
-            echo  $this->oxilab_flip_box_admin_input_text('flip-box-front-title', $this->child_editable[1], 'Front Title', 'Add your flip front title.');
+            echo $this->oxilab_flip_box_admin_input_text('flip-box-front-title', $this->child_editable[1], 'Front Title', 'Add your flip front title.');
             echo $this->oxilab_flip_box_admin_input_icon('flip-box-front-icons', $this->child_editable[3], 'Front Icon', 'Add your front icon, Use Font-Awesome class name. As example fab fa-facebook-f');
             echo $this->image_upload('flip-box-image-upload-url-01', $this->child_editable[5], 'Front Image', 'Add or modify your front image.');
             ?>                                           

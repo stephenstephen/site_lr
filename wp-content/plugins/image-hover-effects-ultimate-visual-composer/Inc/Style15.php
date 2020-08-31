@@ -11,6 +11,19 @@ use OXI_FLIP_BOX_PLUGINS\Page\Admin_Render;
 
 class Style15 extends Admin_Render {
 
+    public function register_child() {
+        $data = ' flip-box-front-title {#}|{#}' . $this->admin_special_charecter($_POST['flip-box-front-title']) . '{#}|{#}'
+                . ' flip-box-backend-icons {#}|{#}' . sanitize_text_field($_POST['flip-box-backend-icons']) . '{#}|{#}'
+                . ' flip-box-image-upload-url-01 {#}|{#}' . sanitize_text_field($_POST['flip-box-image-upload-url-01']) . '{#}|{#}'
+                . ' {#}|{#}{#}|{#}'
+                . ' flip-box-backend-button-text {#}|{#}' . $this->admin_special_charecter($_POST['flip-box-backend-button-text']) . '{#}|{#}'
+                . ' flip-box-backend-link {#}|{#}' . sanitize_text_field($_POST['flip-box-backend-link']) . '{#}|{#}'
+                . ' flip-box-image-upload-url-02 {#}|{#}' . sanitize_text_field($_POST['flip-box-image-upload-url-02']) . '{#}|{#}'
+                . ' flip-box-font-desc {#}|{#}' . $this->admin_special_charecter($_POST['flip-box-font-desc']) . '{#}|{#}'
+                . ' {#}|{#}{#}|{#}';
+        return $data;
+    }
+
     public function register_style() {
         $data = 'oxilab-flip-type |' . sanitize_text_field($_POST['oxilab-flip-type']) . '|'
                 . ' oxilab-flip-effects |' . sanitize_text_field($_POST['oxilab-flip-effects']) . '|'
@@ -106,19 +119,6 @@ class Style15 extends Admin_Render {
                 . ' backend-info-margin-right |' . sanitize_text_field($_POST['backend-info-margin-right']) . '|'
                 . ' custom-css |' . sanitize_text_field($_POST['custom-css']) . '|'
                 . '|';
-        return $data;
-    }
-
-    public function register_child() {
-        $data = ' flip-box-front-title {#}|{#}' . $this->admin_special_charecter($_POST['flip-box-front-title']) . '{#}|{#}'
-                . ' flip-box-backend-icons {#}|{#}' . sanitize_text_field($_POST['flip-box-backend-icons']) . '{#}|{#}'
-                . ' flip-box-image-upload-url-01 {#}|{#}' . sanitize_text_field($_POST['flip-box-image-upload-url-01']) . '{#}|{#}'
-                . ' {#}|{#}{#}|{#}'
-                . ' flip-box-backend-button-text {#}|{#}' . $this->admin_special_charecter($_POST['flip-box-backend-button-text']) . '{#}|{#}'
-                . ' flip-box-backend-link {#}|{#}' . sanitize_text_field($_POST['flip-box-backend-link']) . '{#}|{#}'
-                . ' flip-box-image-upload-url-02 {#}|{#}' . sanitize_text_field($_POST['flip-box-image-upload-url-02']) . '{#}|{#}'
-                . ' flip-box-font-desc {#}|{#}' . $this->admin_special_charecter($_POST['flip-box-font-desc']) . '{#}|{#}'
-                . ' {#}|{#}{#}|{#}';
         return $data;
     }
 

@@ -47,6 +47,10 @@ class Select extends BaseComponent
 
         $defaultValues = (array) $this->extractValueFromAttributes($data);
 
+        if($dynamicValues = $this->extractDynamicValues($data, $form)) {
+            $defaultValues = $dynamicValues;
+        }
+
         $elMarkup = "<select ".$this->buildAttributes($data['attributes']).">".$this->buildOptions($data, $defaultValues)."</select>";
 
         $html = $this->buildElementMarkup($elMarkup, $data, $form);
@@ -88,11 +92,13 @@ class Select extends BaseComponent
 
 			$atts = [
 			    'data-calc_value' =>  ArrayHelper::get($option, 'calc_value'),
+			    'data-custom-properties' =>  ArrayHelper::get($option, 'calc_value'),
                 'value' => ArrayHelper::get($option, 'value'),
             ];
 
 			$opts .="<option ".$this->buildAttributes($atts)." {$selected}>{$option['label']}</option>";
 		}
+
 		return $opts;
 	}
 }

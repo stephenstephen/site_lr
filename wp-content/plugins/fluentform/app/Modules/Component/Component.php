@@ -599,6 +599,7 @@ class Component
         preg_match_all('/{(.*?)}/', $output, $matches);
         $patterns = array_unique($matches[0]);
 
+
         $attrDefaultValues = [];
 
         foreach ($patterns as $pattern) {
@@ -858,6 +859,7 @@ class Component
                     if (ffForms.length) {
                         jQuery.each(ffForms, function (index, ffForm) {
                             jQuery(ffForm).trigger('reInitExtras');
+                            jQuery(document).trigger('ff_reinit', [ffForm]);
                         });
                     }
                 });

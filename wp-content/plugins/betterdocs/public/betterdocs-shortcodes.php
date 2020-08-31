@@ -475,12 +475,14 @@ function betterdocs_category_list( $atts, $content = null ) {
 							if( $sub_categories ) {
 								
 								foreach( $sub_categories as $sub_category ) {
+
 									echo '<span class="docs-sub-cat-title">
 									' . BetterDocs_Helper::arrow_right_svg() . '
 									' . BetterDocs_Helper::arrow_down_svg() . '
 									<a href="#">'.$sub_category->name.'</a></span>';
 
 									echo '<ul class="docs-sub-cat">';
+
 									$sub_args = BetterDocs_Helper::list_query_arg( $get_args['post_type'], $get_args['multiple_knowledge_base'], $sub_category->slug, -1, $alphabetically_order_post );
 									$sub_args = apply_filters( 'betterdocs_sub_cat_articles_args', $sub_args, $sub_category->term_id );
 									$sub_post_query = new WP_Query( $sub_args );
@@ -488,9 +490,7 @@ function betterdocs_category_list( $atts, $content = null ) {
 									if ( $sub_post_query->have_posts() ) :
 
 										while ( $sub_post_query->have_posts() ) : $sub_post_query->the_post();
-										
-										echo '<li><a '.implode(' ',$attr).'>'.get_the_title().'</a></li>';
-											
+
 											$sub_attr = ['href="'.get_the_permalink().'"'];
 
 											if( $page_cat === get_the_ID() ) {

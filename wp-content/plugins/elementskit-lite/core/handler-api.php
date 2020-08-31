@@ -21,6 +21,8 @@ class Handler_Api{
             register_rest_route( untrailingslashit('elementskit/v1/' . $this->prefix), '/(?P<action>\w+)/' . ltrim($this->param, '/'), array(
                 'methods' => \WP_REST_Server::ALLMETHODS,
                 'callback' => [$this, 'action'],
+                'permission_callback' => '__return_true', 
+                // all permissions are implimented inside the callback action
             ));
         });
     }

@@ -24,6 +24,7 @@ use function YoastSEO_Vendor\GuzzleHttp\json_decode;
  * @author     WPDeveloper <support@wpdeveloper.net>
  */
 class BetterDocs_Docs_Post_Type {
+
     public static $post_type = 'docs';
     public static $menu_position = 5;
     public static $category = 'doc_category';
@@ -40,6 +41,7 @@ class BetterDocs_Docs_Post_Type {
      *
      */
     public static function init() {
+
         self::$docs_archive = self::get_docs_archive();
         self::$docs_slug = self::get_docs_slug();
         self::$cat_slug = self::docs_category_slug();
@@ -57,6 +59,7 @@ class BetterDocs_Docs_Post_Type {
         add_action('edited_doc_category', array(__CLASS__, 'updated_doc_category_meta'), 10, 2);
         add_action('admin_enqueue_scripts', array(__CLASS__, 'load_media'));
         add_action('admin_footer', array(__CLASS__, 'add_script'));
+
     }
 
     public static function get_docs_slug() {
@@ -115,9 +118,13 @@ class BetterDocs_Docs_Post_Type {
     public static function docs_category_slug() {
 
         $category_slug = BetterDocs_DB::get_settings('category_slug');
-        if( empty ( $category_slug ) ) {
-            $category_slug = 'docs-category';  
-        } 
+
+        if ( empty ( $category_slug ) ) {
+
+            $category_slug = 'docs-category';
+
+        }
+
         return $category_slug;
     } 
 
@@ -155,9 +162,9 @@ class BetterDocs_Docs_Post_Type {
             'labels'            => $category_labels,
             'show_ui'           => true,
             'show_admin_column' => true,
-            'query_var'             => true,
-            'show_in_rest'          => true,
-            'has_archive' => true,
+            'query_var'         => true,
+            'show_in_rest'      => true,
+            'has_archive'       => true,
         );
 
         $category_args['rewrite'] = apply_filters( 'betterdocs_category_rewrite', array( 'slug' => self::$cat_slug, 'with_front' => false ));
@@ -258,9 +265,13 @@ class BetterDocs_Docs_Post_Type {
         $tag_slug = BetterDocs_DB::get_settings('tag_slug');
 
         if ($tag_slug) {
+
             $tag_args['rewrite'] = array('slug' => $tag_slug, 'with_front' => false);
+
         } else {
+
             $tag_args['rewrite'] = array('slug' => 'docs-tag', 'with_front' => false);
+
         }
 
         register_taxonomy(self::$tag, array(self::$post_type), $tag_args);
@@ -288,7 +299,9 @@ class BetterDocs_Docs_Post_Type {
      * @since    1.0.0
      */
     public static function load_media() {
+
         wp_enqueue_media();
+
     }
 
     /**
@@ -296,14 +309,20 @@ class BetterDocs_Docs_Post_Type {
      *
      * @param string $tax_slug The taxonomy's slug.
      */
-    public static function default_term_order($tax_slug) {
+    public static function default_term_order( $tax_slug ) {
+
         $terms = get_terms($tax_slug, array('hide_empty' => false));
         $order = self::get_max_taxonomy_order($tax_slug);
+        
         foreach ($terms as $term) {
-            if (!get_term_meta($term->term_id, 'doc_category_order', true)) {
+
+            if ( !get_term_meta( $term->term_id, 'doc_category_order', true ) ) {
+
                 update_term_meta($term->term_id, 'doc_category_order', $order);
                 $order++;
+
             }
+
         }
     }
 
@@ -311,7 +330,9 @@ class BetterDocs_Docs_Post_Type {
      * Order the terms on the admin side.
      */
     public static function admin_order_terms() {
+
         $screen = function_exists('get_current_screen') ? get_current_screen() : '';
+        
         if (in_array($screen->id, array('toplevel_page_betterdocs-admin', 'betterdocs_page_betterdocs-settings'))) {
             self::default_term_order('doc_category');
         }
@@ -320,13 +341,16 @@ class BetterDocs_Docs_Post_Type {
             self::default_term_order($screen->taxonomy);
             add_filter('terms_clauses', array(__CLASS__, 'set_tax_order'), 10, 3);
         }
+
     }
 
     /**
      * Get the maximum doc_category_order for this taxonomy. This will be applied to terms that don't have a tax position.
      */
     private static function get_max_taxonomy_order($tax_slug) {
+        
         global $wpdb;
+
         $max_term_order = $wpdb->get_col(
             $wpdb->prepare(
                 "SELECT MAX( CAST( tm.meta_value AS UNSIGNED ) )
@@ -336,7 +360,9 @@ class BetterDocs_Docs_Post_Type {
                 $tax_slug
             )
         );
+
         $max_term_order = is_array($max_term_order) ? current($max_term_order) : 0;
+
         return (int) $max_term_order === 0 || empty($max_term_order) ? 1 : (int) $max_term_order + 1;
     }
 
@@ -348,17 +374,23 @@ class BetterDocs_Docs_Post_Type {
      * @param array $args       Array of term query args.
      */
     public static function set_tax_order($pieces, $taxonomies, $args) {
-        foreach ($taxonomies as $taxonomy) {
+
+        foreach ( $taxonomies as $taxonomy ) {
+
             global $wpdb;
+
             if ($taxonomy === 'doc_category') {
+
                 $join_statement = " LEFT JOIN $wpdb->termmeta AS term_meta ON t.term_id = term_meta.term_id AND term_meta.meta_key = 'doc_category_order'";
 
                 if (!self::does_substring_exist($pieces['join'], $join_statement)) {
                     $pieces['join'] .= $join_statement;
                 }
+
                 $pieces['orderby'] = 'ORDER BY CAST( term_meta.meta_value AS UNSIGNED )';
             }
         }
+
         return $pieces;
     }
 
@@ -366,9 +398,13 @@ class BetterDocs_Docs_Post_Type {
      * Order the taxonomies on the front end.
      */
     public static function front_end_order_terms() {
+
         if (!is_admin()) {
+
             add_filter('terms_clauses', array(__CLASS__, 'set_tax_order'), 10, 3);
+
         }
+
     }
 
     /**
@@ -379,8 +415,10 @@ class BetterDocs_Docs_Post_Type {
      *
      * @return bool True if substring exists, else false.
      */
-    protected static function does_substring_exist($string, $substring) {
+    protected static function does_substring_exist( $string, $substring ) {
+
         return strstr($string, $substring) !== false;
+
     }
 
     /**
@@ -389,13 +427,20 @@ class BetterDocs_Docs_Post_Type {
      * @param string $tax_slug The taxonomy's slug.
      */
     public static function get_manage_docs() {
+
         $terms = get_terms('knowledge_base', array('hide_empty' => false));
+        
         if($terms) {
+
             echo '<select name="term_meta[knowledge_base]" id="knowledge_base">';
             echo '<option> ' . esc_html__('Select an option') . ' </option>';
+            
             foreach ($terms as $term) {
+
                 echo '<option value="' . $term->slug . '">' . $term->name . '</option>';
+
             }
+
             echo '</select>';
         }
     }
@@ -405,14 +450,17 @@ class BetterDocs_Docs_Post_Type {
      *
      * @since 1.0.0
     */
-    public static function add_doc_category_meta($taxonomy) { ?>
-        <?php 
+    public static function add_doc_category_meta($taxonomy) {
+
         do_action( 'betterdocs_doc_category_add_form_before' );
+
         ?>
+
         <div class="form-field term-group">
             <label for="doc-category-order"><?php esc_html_e('Order', 'betterdocs'); ?></label>
             <input type="number" id="doc-category-order" style="width:100px" name="term_meta[order]" value="">
         </div>
+
         <div class="form-field term-group">
             <label for="doc-category-image-id"><?php esc_html_e('Category Icon', 'betterdocs'); ?></label>
             <input type="hidden" id="doc-category-image-id" name="term_meta[image-id]" class="custom_media_url" value="">
@@ -428,6 +476,7 @@ class BetterDocs_Docs_Post_Type {
                     value="<?php esc_html_e('Remove Image', 'betterdocs'); ?>" />
             </p>
         </div>
+
     <?php
     }
 
@@ -492,13 +541,20 @@ class BetterDocs_Docs_Post_Type {
             <td>
                 <input type="hidden" id="doc-category-image-id" name="term_meta[image-id]" value="<?php echo $cat_icon_id; ?>">
                 <div id="doc-category-image-wrapper">
+                    
                     <?php
+
                         if ( $cat_icon_id ) {
+
                             echo wp_get_attachment_image( $cat_icon_id, 'thumbnail' );
+
                         } else {
+
                             echo '<img src="' . BETTERDOCS_ADMIN_URL . 'assets/img/betterdocs-cat-icon.svg" alt="">';
+                        
                         }
                     ?>
+
                 </div>
                 <p>
                     <input type="button" class="button button-secondary betterdocs_tax_media_button"
@@ -539,11 +595,14 @@ class BetterDocs_Docs_Post_Type {
      * @since 1.0.0
     */
     public static function add_script() {
+        
         global $current_screen;
-        if($current_screen->id == 'edit-doc_category'){    
+        if ( $current_screen->id == 'edit-doc_category' ) {
+        
         ?>
         <script>
         jQuery(document).ready(function($) {
+
             function betterdocs_media_upload(button_class) {
                 var _custom_media = true,
                     _betterdocs_send_attachment = wp.media.editor.send.attachment;
@@ -568,7 +627,9 @@ class BetterDocs_Docs_Post_Type {
                     return false;
                 });
             }
+
             betterdocs_media_upload('.betterdocs_tax_media_button.button');
+
             $('body').on('click', '.doc_tax_media_remove', function() {
                 $('#doc-category-image-id').val('');
                 $('#doc-category-image-wrapper').html(

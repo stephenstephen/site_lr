@@ -8,6 +8,7 @@ namespace OXI_FLIP_BOX_PLUGINS\Classes;
  * @author biplo
  */
 class Support_Recommended {
+
     /**
      * Revoke this function when the object is created.
      *
@@ -28,6 +29,22 @@ class Support_Recommended {
     }
 
     /**
+     * Admin Notice Ajax  loader
+     * @return void
+     */
+    public function notice_dissmiss() {
+        if (isset($_POST['_wpnonce']) || wp_verify_nonce(sanitize_key(wp_unslash($_POST['_wpnonce'])), 'oxi_flip_admin_recommended')):
+            $data = 'done';
+            update_option('oxilab_flip_box_recommended', $data);
+            echo 'done';
+        else:
+            return;
+        endif;
+
+        die();
+    }
+
+    /**
      * First Installation Track
      * @return void
      */
@@ -40,7 +57,7 @@ class Support_Recommended {
 //                $plugin = 'sb-image-hover-effects';
 //            endif;
 //        else
-            if (!isset($installed_plugins['shortcode-addons/index.php'])):
+        if (!isset($installed_plugins['shortcode-addons/index.php'])):
             $plugin = 'shortcode-addons';
         endif;
         if (!empty($plugin)):
@@ -84,22 +101,6 @@ class Support_Recommended {
     public function dismiss_button_scripts() {
         wp_enqueue_script('oxi_flip-admin-recommended', OXI_FLIP_BOX_URL . '/asset/backend/js/admin-recommended.js', false, OXI_FLIP_BOX_PLUGIN_VERSION);
         wp_localize_script('oxi_flip-admin-recommended', 'oxi_flip_admin_recommended', array('ajaxurl' => admin_url('admin-ajax.php'), 'nonce' => wp_create_nonce('oxi_flip_admin_recommended')));
-    }
-
-    /**
-     * Admin Notice Ajax  loader
-     * @return void
-     */
-    public function notice_dissmiss() {
-        if (isset($_POST['_wpnonce']) || wp_verify_nonce(sanitize_key(wp_unslash($_POST['_wpnonce'])), 'oxi_flip_admin_recommended')):
-            $data = 'done';
-            update_option('oxilab_flip_box_recommended', $data);
-            echo 'done';
-        else:
-            return;
-        endif;
-
-        die();
     }
 
 }

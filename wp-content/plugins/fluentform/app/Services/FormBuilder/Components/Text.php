@@ -42,7 +42,7 @@ class Text extends BaseComponent
             );
         }
 
-        if($data['element'] == 'input_number' || $data['element'] = 'custom_payment_component') {
+        if($data['element'] == 'input_number' || $data['element'] == 'custom_payment_component') {
             if(
                 ArrayHelper::get($data, 'settings.calculation_settings.status') &&
                 $formula = ArrayHelper::get($data, 'settings.calculation_settings.formula')
@@ -58,8 +58,11 @@ class Text extends BaseComponent
                     }
                     return $css_class;
                 }, 10, 2);
-
                 do_action('ff_rendering_calculation_form', $form, $data);
+            } else {
+                if(!apply_filters('fluentform_disable_inputmode', false)) {
+                    $data['attributes']['inputmode'] = 'numeric';
+                }
             }
 
             if($step = ArrayHelper::get($data, 'settings.number_step')) {
@@ -67,8 +70,9 @@ class Text extends BaseComponent
             } else if(ArrayHelper::get($data, 'attributes.type') == 'number') {
                 $data['attributes']['step'] =  'any';
             }
-            
-            if($min = ArrayHelper::get($data, 'settings.validation_rules.min.value')) {
+
+            $min = ArrayHelper::get($data, 'settings.validation_rules.min.value');
+            if($min || $min == 0) {
                 $data['attributes']['min'] =  $min;
             }
 

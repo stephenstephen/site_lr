@@ -64,7 +64,7 @@ class Attr{
             self::key(),
             [$this, 'register_settings_contents__settings'],
             self::get_url() . 'assets/images/favicon.png',
-            2
+            '58.6'
         );
 
         // add_submenu_page( $parent_slug, $page_title, $menu_title, $capability, $menu_slug, $function = '' )

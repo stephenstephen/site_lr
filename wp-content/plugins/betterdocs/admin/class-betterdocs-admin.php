@@ -84,12 +84,15 @@ class BetterDocs_Admin {
 	* @since    1.0.0
 	*/
 	public function enqueue_styles( $hook ) {
+
 		$page_status = false;
+
 		wp_enqueue_style( 
 			$this->plugin_name . '-admin-global', 
 			BETTERDOCS_ADMIN_URL . 'assets/css/betterdocs-global.css', 
 			array(), $this->version, 'all' 
 		);
+
 		if( $hook == 'betterdocs_page_betterdocs-settings' || $hook == 'toplevel_page_betterdocs-admin' ) {
 			$page_status = true;
 		}
@@ -98,16 +101,22 @@ class BetterDocs_Admin {
 			return;
 		}
 		
-		wp_enqueue_style( 
-			$this->plugin_name . '-select2', 
-			BETTERDOCS_ADMIN_URL . 'assets/css/select2.min.css', 
-			array(), $this->version, 'all' 
-		);
+		if ( $hook == 'betterdocs_page_betterdocs-settings' ) {
+
+			wp_enqueue_style( 
+				$this->plugin_name . '-select2', 
+				BETTERDOCS_ADMIN_URL . 'assets/css/select2.min.css', 
+				array(), $this->version, 'all' 
+			);
+
+		}
+
 		wp_enqueue_style( 
 			$this->plugin_name, 
 			BETTERDOCS_ADMIN_URL . 'assets/css/betterdocs-admin.css', 
 			array(), $this->version, 'all' 
 		);
+		
 	}
 	/**
 	* Register the JavaScript for the admin area.
@@ -115,29 +124,37 @@ class BetterDocs_Admin {
 	* @since    1.0.0
 	*/
 	public function enqueue_scripts( $hook ) {
+		
 		wp_enqueue_script( 'wp-color-picker' );
-		// wp_enqueue_script( 'jquery-ui-datepicker' );
-		// wp_enqueue_media();
-		wp_enqueue_script(
-			$this->plugin_name . '-select2', 
-			BETTERDOCS_ADMIN_URL . 'assets/js/select2.min.js', 
-			array( 'jquery' ), $this->version, true 
-		);
-		wp_enqueue_script(
-			$this->plugin_name . '-swal', 
-			BETTERDOCS_ADMIN_URL . 'assets/js/sweetalert.min.js', 
-			array( 'jquery' ), $this->version, true 
-		);
+		
+		if ( $hook == 'betterdocs_page_betterdocs-settings' ) {
+			
+			wp_enqueue_script(
+				$this->plugin_name . '-select2',
+				BETTERDOCS_ADMIN_URL . 'assets/js/select2.min.js', 
+				array( 'jquery' ), $this->version, true 
+			);
+	
+			wp_enqueue_script(
+				$this->plugin_name . '-sweetalert', 
+				BETTERDOCS_ADMIN_URL . 'assets/js/sweetalert.min.js', 
+				array( 'jquery' ), $this->version, true 
+			);
+
+		}
+
 		wp_enqueue_script( 
 			$this->plugin_name, 
 			BETTERDOCS_ADMIN_URL . 'assets/js/betterdocs-admin.js', 
 			array( 'jquery' ), $this->version, true 
 		);
+
 		wp_localize_script( $this->plugin_name, 'betterdocsAdminConfig', self::toggleFields() );
 		
 	}
 
 	public function toggleFields( $builder = false ){
+		
 		$args = BetterDocs_Settings::settings_args();
 
 		$toggleFields = $hideFields = $conditions = array();
@@ -194,6 +211,7 @@ class BetterDocs_Admin {
 			'hideFields' => $hideFields, 
 		);
 	}
+
 	public function a_walk( $array, $field_key, &$returned_array = [] ){
 		array_walk( $array, function( $value, $key ) use ( $field_key, &$returned_array ) {
 			$returned_array[ $field_key ][ $key ] = $value;
@@ -201,6 +219,7 @@ class BetterDocs_Admin {
 
 		return $returned_array;
 	}
+
 	/**
 	* Admin Menu Page
 	*
