@@ -104,7 +104,8 @@ class WP_Widget_Recent_Posts extends WP_Widget {
 				<li>
 					<a href="<?php the_permalink( $recent_post->ID ); ?>"<?php echo $aria_current; ?>><?php echo $title; ?></a>
 					<?php if ( $show_date ) : ?>
-						<span class="post-date"><?php echo get_the_date( '', $recent_post->ID ); ?></span>
+						
+						<span class="post-date"><?php echo @the_field('periode', $recent_post->ID); ?></span>
 					<?php endif; ?>
 				</li>
 			<?php endforeach; ?>

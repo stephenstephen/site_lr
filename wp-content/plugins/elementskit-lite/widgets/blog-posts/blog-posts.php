@@ -2541,7 +2541,7 @@ class Elementskit_Widget_Blog_Posts extends Widget_Base {
                                 ?>
 
                                 <span class="meta-date-text">
-                                    <?php echo esc_html( get_the_date() ); ?>
+                                    <?php echo esc_html( @the_field('periode') ); ?>
                                 </span>
                             </span>
                         <?php endif; ?>
